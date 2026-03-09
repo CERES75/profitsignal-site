@@ -435,7 +435,7 @@ export default function Home() {
                   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                OTTIENI PIÙ CLIENTI
+                Consulenza gratuita
               </Button>
             </div>
           </motion.div>
@@ -489,7 +489,7 @@ export default function Home() {
                   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Prenota una consulenza gratuita
+                OTTIENI PIÙ CLIENTI
               </Button>
             </div>
           </motion.div>
