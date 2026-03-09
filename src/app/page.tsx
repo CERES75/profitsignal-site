@@ -175,7 +175,12 @@ const LinkedInIcon = ({ className = "w-6 h-6" }) => (
 
 const ArrowUpIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M5 10l7-7m0 0l7 7m-7-7v18"
+    />
   </svg>
 );
 
@@ -310,7 +315,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       {/* Premium Dark Header */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -320,20 +325,18 @@ export default function Home() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-22 lg:h-28">
-            {/* Logo + Brand Name */}
-            <Link href="/" className="flex items-center">
+          <div className="flex items-center justify-between h-20 lg:h-28 min-w-0">
+            <Link href="/" className="flex items-center min-w-0 max-w-[78%]">
               <Image
                 src="https://ugc.same-assets.com/ToF3sWRYag7DdlJhJBnq9wd5V0fYDZym.png"
                 alt="ProfitSignal"
                 width={230}
                 height={65}
-                className="h-12 w-auto lg:h-14 object-contain"
+                className="h-10 sm:h-12 w-auto max-w-full object-contain"
                 priority
               />
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-12 ml-16">
               {navLinks.map((link) => {
                 const sectionId = link.href.replace("#", "");
@@ -357,8 +360,7 @@ export default function Home() {
               })}
             </div>
 
-            {/* Language Switcher + CTA Button */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
               <div className="hidden sm:flex items-center gap-1 text-sm font-medium">
                 <span className="px-2 py-1 text-blue-400 font-semibold">IT</span>
                 <span className="text-white/30">|</span>
@@ -390,7 +392,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -428,7 +429,7 @@ export default function Home() {
               })}
 
               <Button
-                className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl py-6"
+                className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl py-6 whitespace-normal break-words text-center"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
@@ -443,27 +444,27 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-          <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+          <div className="absolute top-16 right-[-20%] sm:right-20 w-[260px] h-[260px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
+          <div className="absolute bottom-16 left-[-20%] sm:left-20 w-[220px] h-[220px] sm:w-[400px] sm:h-[400px] bg-purple-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:60px_60px]" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
-              <span className="text-base font-semibold text-blue-300 tracking-wide">
+            <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10 max-w-full">
+              <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
                 Partner per la crescita digitale
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] sm:leading-tight break-words">
               <span className="text-white">Siti web e sistemi digitali</span>
               <br />
               <span className="text-white">progettati per </span>
@@ -475,15 +476,15 @@ export default function Home() {
               <span className="text-gray-400">non solo traffico.</span>
             </h1>
 
-            <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-400 leading-relaxed">
+            <p className="max-w-3xl mx-auto text-base sm:text-xl text-gray-400 leading-relaxed px-1">
               Aiutiamo aziende e professionisti a crescere online con siti web ad alta
               conversione, sistemi di lead generation e strategie digitali misurabili.
             </p>
 
-            <div className="pt-6">
+            <div className="pt-4 sm:pt-6">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-lg px-10 py-7 rounded-xl font-medium"
+                className="w-full sm:w-auto max-w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 rounded-xl font-medium whitespace-normal break-words text-center"
                 onClick={() =>
                   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
                 }
@@ -494,7 +495,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
           <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
             <div className="w-1 h-2 bg-white/50 rounded-full" />
           </div>
@@ -502,9 +503,9 @@ export default function Home() {
       </section>
 
       {/* Metodo */}
-      <section id="metodo" className="py-32 lg:py-40 bg-white">
+      <section id="metodo" className="py-24 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-24">
+          <AnimatedSection className="text-center mb-16 sm:mb-24">
             <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
               Il nostro approccio
             </span>
@@ -550,18 +551,18 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
                 viewport={{ once: true }}
-                className="relative group"
+                className="relative group min-w-0"
               >
-                <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
                   <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
                     {step.num}
                   </div>
-                  <div className="relative">
+                  <div className="relative min-w-0">
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6">
                       {step.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{step.desc}</p>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">{step.title}</h3>
+                    <p className="text-gray-600 leading-relaxed break-words">{step.desc}</p>
                   </div>
                 </div>
               </motion.div>
@@ -571,9 +572,9 @@ export default function Home() {
       </section>
 
       {/* Servizi */}
-      <section id="servizi" className="py-32 lg:py-40 bg-slate-900">
+      <section id="servizi" className="py-24 lg:py-40 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-24">
+          <AnimatedSection className="text-center mb-16 sm:mb-24">
             <span className="inline-block text-sm font-semibold text-blue-400 tracking-wider uppercase mb-4">
               Cosa facciamo
             </span>
@@ -624,19 +625,19 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 * i }}
                 viewport={{ once: true }}
-                className="group"
+                className="group min-w-0"
               >
-                <div className="h-full p-8 lg:p-10 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500">
+                <div className="h-full p-8 lg:p-10 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 overflow-hidden">
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                  <p className="text-gray-400 mb-6 leading-relaxed">{service.desc}</p>
+                  <h3 className="text-2xl font-bold text-white mb-4 break-words">{service.title}</h3>
+                  <p className="text-gray-400 mb-6 leading-relaxed break-words">{service.desc}</p>
                   <ul className="space-y-3">
                     {service.features.map((feature, j) => (
-                      <li key={j} className="flex items-center gap-3 text-gray-300">
+                      <li key={j} className="flex items-center gap-3 text-gray-300 min-w-0">
                         <CheckIcon />
-                        <span>{feature}</span>
+                        <span className="break-words">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -648,10 +649,10 @@ export default function Home() {
       </section>
 
       {/* Clienti */}
-      <section className="py-32 lg:py-40 bg-gray-50">
+      <section className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            <AnimatedSection className="min-w-0">
               <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
                 I nostri clienti
               </span>
@@ -676,7 +677,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 * i }}
                     viewport={{ once: true }}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-white shadow-sm"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-white shadow-sm min-w-0 overflow-hidden"
                   >
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -688,23 +689,25 @@ export default function Home() {
                         />
                       </svg>
                     </div>
-                    <span className="text-slate-700 font-medium">{item}</span>
+                    <span className="text-slate-700 font-medium text-base sm:text-lg leading-snug break-words min-w-0">
+                      {item}
+                    </span>
                   </motion.div>
                 ))}
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2} className="relative">
+            <AnimatedSection delay={0.2} className="relative min-w-0">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl blur-3xl opacity-10" />
-              <div className="relative bg-white rounded-xl p-10 shadow-xl border border-gray-100">
+              <div className="relative bg-white rounded-xl p-6 sm:p-10 shadow-xl border border-gray-100 overflow-hidden max-w-full">
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 break-words">
                     Vuoi sapere se facciamo al caso tuo?
                   </h3>
                   <p className="text-gray-600">Prenota una call gratuita di 15 minuti</p>
                 </div>
                 <Button
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-6 rounded-xl text-lg font-medium"
+                  className="w-full max-w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-5 sm:py-6 rounded-xl text-base sm:text-lg font-medium whitespace-normal break-words text-center px-4 sm:px-6"
                   onClick={() =>
                     document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
                   }
@@ -718,22 +721,22 @@ export default function Home() {
       </section>
 
       {/* Chi siamo */}
-      <section id="chi-siamo" className="py-32 lg:py-40 bg-white">
+      <section id="chi-siamo" className="py-24 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection className="order-2 lg:order-1">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <AnimatedSection className="order-2 lg:order-1 min-w-0">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl blur-2xl" />
 
-                <div className="relative bg-slate-900 rounded-xl p-10 lg:p-14 min-h-[520px] flex items-center">
-                  <blockquote className="text-3xl lg:text-5xl text-white font-light leading-[1.2] italic max-w-[680px]">
+                <div className="relative bg-slate-900 rounded-xl p-8 sm:p-10 lg:p-14 min-h-[360px] sm:min-h-[520px] flex items-center overflow-hidden">
+                  <blockquote className="text-2xl sm:text-3xl lg:text-5xl text-white font-light leading-[1.2] italic max-w-[680px] break-words">
                     “Non realizziamo semplici siti web. Costruiamo sistemi digitali progettati per generare opportunità di business.”
                   </blockquote>
                 </div>
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2} className="order-1 lg:order-2 space-y-8">
+            <AnimatedSection delay={0.2} className="order-1 lg:order-2 space-y-8 min-w-0">
               <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase">
                 Chi siamo
               </span>
@@ -752,7 +755,7 @@ export default function Home() {
                   opportunità di business in modo costante.
                 </p>
                 <p>
-                  Ogni progetto nasce da un'analisi approfondita e si sviluppa con una
+                  Ogni progetto nasce da un&apos;analisi approfondita e si sviluppa con una
                   strategia chiara, orientata ai risultati e alla crescita misurabile.
                 </p>
               </div>
@@ -762,21 +765,21 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 lg:py-40 relative overflow-hidden">
+      <section className="py-24 lg:py-40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:50px_50px]" />
 
-        <AnimatedSection className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+        <AnimatedSection className="relative z-10 max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center min-w-0">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight break-words">
             Pronto a far crescere il tuo business online?
           </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
             Scopri come possiamo aiutarti a generare più clienti con un sistema
             digitale personalizzato.
           </p>
           <Button
             size="lg"
-            className="bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 shadow-2xl shadow-black/30 hover:shadow-black/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-lg px-10 py-7 rounded-xl font-semibold border border-white/20"
+            className="w-full sm:w-auto max-w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 shadow-2xl shadow-black/30 hover:shadow-black/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 rounded-xl font-semibold border border-white/20 whitespace-normal break-words text-center"
             onClick={() =>
               document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
             }
@@ -787,9 +790,9 @@ export default function Home() {
       </section>
 
       {/* Contatti */}
-      <section id="contatti" className="py-32 lg:py-40 bg-gray-50">
+      <section id="contatti" className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-20">
+          <AnimatedSection className="text-center mb-16 sm:mb-20">
             <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
               Contattaci
             </span>
@@ -802,8 +805,8 @@ export default function Home() {
           </AnimatedSection>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <AnimatedSection delay={0.1}>
-              <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-8 sm:p-10">
+            <AnimatedSection delay={0.1} className="min-w-0">
+              <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-6 sm:p-8 lg:p-10 overflow-hidden">
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">
                   Richiedi una consulenza
                 </h3>
@@ -920,7 +923,7 @@ export default function Home() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-lg py-6 rounded-xl disabled:opacity-70 font-medium"
+                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg py-5 sm:py-6 rounded-xl disabled:opacity-70 font-medium whitespace-normal break-words text-center"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
@@ -950,29 +953,29 @@ export default function Home() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2} className="space-y-6">
+            <AnimatedSection delay={0.2} className="space-y-6 min-w-0">
               <div className="grid gap-4">
                 <a
                   href="mailto:profitsignalmedia@gmail.com"
-                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300 min-w-0"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white shrink-0">
                     <MailIcon />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold text-slate-900 mb-1">Email</h3>
-                    <p className="text-gray-600">profitsignalmedia@gmail.com</p>
+                    <p className="text-gray-600 break-all">profitsignalmedia@gmail.com</p>
                   </div>
                 </a>
 
                 <a
                   href="tel:+393920314427"
-                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300 min-w-0"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white shrink-0">
                     <PhoneIcon />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold text-slate-900 mb-1">Telefono</h3>
                     <p className="text-gray-600">+39 392 031 4427</p>
                   </div>
@@ -982,19 +985,19 @@ export default function Home() {
                   href="https://instagram.com/profitsignalmedia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-purple-200 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-purple-200 shadow-sm hover:shadow-lg transition-all duration-300 min-w-0"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white shrink-0">
                     <InstagramIcon />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold text-slate-900 mb-1">Instagram</h3>
                     <p className="text-gray-600">@profitsignalmedia</p>
                   </div>
                 </a>
               </div>
 
-              <div className="p-8 rounded-xl bg-slate-900 text-white">
+              <div className="p-8 rounded-xl bg-slate-900 text-white overflow-hidden">
                 <h3 className="text-xl font-bold mb-4">Cosa succede dopo?</h3>
                 <ol className="space-y-4">
                   {[
@@ -1003,11 +1006,11 @@ export default function Home() {
                     "Analizziamo insieme le tue esigenze",
                     "Ti presentiamo una proposta personalizzata",
                   ].map((step, i) => (
-                    <li key={i} className="flex items-start gap-4">
+                    <li key={i} className="flex items-start gap-4 min-w-0">
                       <span className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
                         {i + 1}
                       </span>
-                      <span className="text-gray-300">{step}</span>
+                      <span className="text-gray-300 break-words">{step}</span>
                     </li>
                   ))}
                 </ol>
@@ -1018,17 +1021,17 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 bg-slate-900 text-white">
+      <footer className="py-16 sm:py-20 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
-            <div>
+            <div className="min-w-0">
               <div className="mb-6">
                 <Image
                   src="https://ugc.same-assets.com/SXdB71-Hv5w9TGoHY8aB8PtFIZbAHVap.png"
                   alt="ProfitSignal"
                   width={230}
                   height={65}
-                  className="w-auto h-12 object-contain"
+                  className="w-auto h-12 object-contain max-w-full"
                 />
               </div>
 
@@ -1042,10 +1045,7 @@ export default function Home() {
               <ul className="space-y-3">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
+                    <a href={link.href} className="text-gray-400 hover:text-white transition-colors">
                       {link.label}
                     </a>
                   </li>
@@ -1093,10 +1093,7 @@ export default function Home() {
               <Link href="/privacy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link
-                href="/cookie-policy"
-                className="hover:text-white transition-colors"
-              >
+              <Link href="/cookie-policy" className="hover:text-white transition-colors">
                 Cookie Policy
               </Link>
             </div>
@@ -1109,13 +1106,13 @@ export default function Home() {
         href="https://wa.me/393920314427?text=Ciao!%20Vorrei%20informazioni%20sui%20vostri%20servizi."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 left-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 group"
+        className="fixed bottom-24 sm:bottom-8 left-4 sm:left-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 group"
         aria-label="Contattaci su WhatsApp"
       >
         <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
-        <span className="absolute left-16 bg-slate-900 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
+        <span className="hidden md:block absolute left-16 bg-slate-900 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
           Scrivici su WhatsApp
         </span>
       </a>
@@ -1126,7 +1123,7 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
+          className="fixed bottom-24 sm:bottom-8 right-4 sm:right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
           aria-label="Torna su"
         >
           <ArrowUpIcon />
