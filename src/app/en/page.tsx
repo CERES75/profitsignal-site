@@ -430,7 +430,7 @@ export default function HomeEN() {
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                Book a Free Consultation
+                GET MORE CLIENTS
               </Button>
             </div>
           </motion.div>
@@ -484,7 +484,7 @@ export default function HomeEN() {
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Book a Free Consultation
+                Free consultation
               </Button>
             </div>
           </motion.div>
@@ -694,7 +694,7 @@ export default function HomeEN() {
                     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  Request a Free Strategic Consultation
+                  BOOK YOUR FREE CONSULTATION
                 </Button>
               </div>
             </AnimatedSection>
@@ -764,7 +764,7 @@ export default function HomeEN() {
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            Book a Free Consultation
+            START GETTING CLIENTS
           </Button>
         </AnimatedSection>
       </section>
