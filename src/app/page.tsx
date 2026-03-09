@@ -435,7 +435,7 @@ export default function Home() {
                   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                Prenota una consulenza gratuita
+                OTTIENI PIÙ CLIENTI
               </Button>
             </div>
           </motion.div>
