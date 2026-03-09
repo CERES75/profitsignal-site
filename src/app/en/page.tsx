@@ -196,7 +196,36 @@ export default function HomeEN() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+// FAQ STATE
+const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+const faqItems = [
+{
+question: "How long does it take to build a website?",
+answer:
+"Most websites can be designed and launched within a few weeks, depending on the complexity of the project.",
+},
+{
+question: "Will the website be built to generate leads?",
+answer:
+"Yes. Every website is designed with conversion in mind, helping turn visitors into real enquiries.",
+},
+{
+question: "How is this different from a standard website?",
+answer:
+"Most websites are just online brochures. We build digital systems designed to generate clients.",
+},
+{
+question: "Do you offer support after launch?",
+answer:
+"Yes. We can continue supporting you with updates, improvements, and optimisation.",
+},
+{
+question: "How do I get started?",
+answer:
+"The easiest way is to book a free consultation so we can understand your goals.",
+},
+];
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -768,7 +797,65 @@ export default function HomeEN() {
           </Button>
         </AnimatedSection>
       </section>
+{/* FAQ SECTION */}
 
+<section className="py-24">
+<div className="max-w-4xl mx-auto px-6">
+
+<div className="text-center mb-16">
+<h2 className="text-3xl md:text-4xl font-bold mb-4">
+Frequently asked questions
+</h2>
+<p className="text-muted-foreground">
+Everything you need to know before getting started.
+</p>
+</div>
+
+<div className="space-y-4">
+
+{faqItems.map((item, index) => (
+
+<div
+key={index}
+className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden"
+>
+
+<button
+type="button"
+onClick={() => setOpenFaq(openFaq === index ? null : index)}
+className="w-full flex items-center justify-between text-left px-6 py-5"
+>
+
+<span className="text-lg font-medium">
+{item.question}
+</span>
+
+<ChevronDown
+className={`w-5 h-5 transition-transform ${
+openFaq === index ? "rotate-180" : ""
+}`}
+/>
+
+</button>
+
+{openFaq === index && (
+
+<div className="px-6 pb-6 text-gray-600 leading-relaxed">
+
+{item.answer}
+
+</div>
+
+)}
+
+</div>
+
+))}
+
+</div>
+
+</div>
+</section>
       {/* Contact Section */}
       <section id="contact" className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
