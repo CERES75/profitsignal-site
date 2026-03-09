@@ -7,7 +7,15 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 
 // Animated Section Component
-const AnimatedSection = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
+const AnimatedSection = ({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -18,7 +26,11 @@ const AnimatedSection = ({ children, className = "", delay = 0 }: { children: Re
       animate={isInView ? "visible" : "hidden"}
       variants={{
         hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut", delay } }
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut", delay },
+        },
       }}
       className={className}
     >
@@ -30,79 +42,134 @@ const AnimatedSection = ({ children, className = "", delay = 0 }: { children: Re
 // Icons
 const AnalysisIcon = () => (
   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+    />
   </svg>
 );
 
 const StrategyIcon = () => (
   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+    />
   </svg>
 );
 
 const ImplementIcon = () => (
   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+    />
   </svg>
 );
 
 const OptimizeIcon = () => (
   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+    />
   </svg>
 );
 
 const WebsiteIcon = () => (
   <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+    />
   </svg>
 );
 
 const LeadGenIcon = () => (
   <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+    />
   </svg>
 );
 
 const AcquisitionIcon = () => (
   <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+    />
   </svg>
 );
 
 const CheckIcon = () => (
-  <svg className="w-6 h-6 text-emerald-400 drop-shadow-sm flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+  <svg
+    className="w-6 h-6 text-emerald-400 drop-shadow-sm flex-shrink-0"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2.5}
+      d="M5 13l4 4L19 7"
+    />
   </svg>
 );
 
 const MailIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    />
   </svg>
 );
 
 const PhoneIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+    />
   </svg>
 );
 
 const InstagramIcon = ({ className = "w-6 h-6" }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
   </svg>
 );
 
 const FacebookIcon = ({ className = "w-6 h-6" }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
   </svg>
 );
 
 const LinkedInIcon = ({ className = "w-6 h-6" }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
   </svg>
 );
 
@@ -130,13 +197,12 @@ export default function HomeEN() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  // Contact form state
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
     telefono: "",
     servizio: "",
-    messaggio: ""
+    messaggio: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
@@ -146,7 +212,6 @@ export default function HomeEN() {
       setIsScrolled(window.scrollY > 50);
       setShowScrollTop(window.scrollY > 500);
 
-      // Detect active section
       const sections = ["method", "services", "about", "contact"];
       let currentSection = "";
 
@@ -162,6 +227,7 @@ export default function HomeEN() {
       }
       setActiveSection(currentSection);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -170,9 +236,11 @@ export default function HomeEN() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -180,33 +248,34 @@ export default function HomeEN() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    // Map service values to readable names
     const serviceMap: Record<string, string> = {
-      'sito-web': 'High-converting website',
-      'lead-gen': 'Lead generation system',
-      'acquisizione': 'Client acquisition strategy',
-      'altro': 'Other',
+      "sito-web": "High-converting website",
+      "lead-gen": "Lead generation system",
+      acquisizione: "Client acquisition strategy",
+      altro: "Other",
     };
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: 'b61e64f0-c4d2-4cb3-9d2c-fd7fd07c7f5d',
+          access_key: "b61e64f0-c4d2-4cb3-9d2c-fd7fd07c7f5d",
           subject: `New Contact Request from ${formData.nome} - ProfitSignal`,
-          from_name: 'ProfitSignal Website',
+          from_name: "ProfitSignal Website",
           replyto: formData.email,
           Name: formData.nome,
           Email: formData.email,
-          Phone: formData.telefono || 'Not provided',
-          Service: formData.servizio ? serviceMap[formData.servizio] || formData.servizio : 'Not specified',
+          Phone: formData.telefono || "Not provided",
+          Service: formData.servizio
+            ? serviceMap[formData.servizio] || formData.servizio
+            : "Not specified",
           Message: formData.messaggio,
-          Source: 'ProfitSignal Contact Form',
-          Language: 'English',
+          Source: "ProfitSignal Contact Form",
+          Language: "English",
         }),
       });
 
@@ -214,7 +283,13 @@ export default function HomeEN() {
 
       if (result.success) {
         setSubmitStatus("success");
-        setFormData({ nome: "", email: "", telefono: "", servizio: "", messaggio: "" });
+        setFormData({
+          nome: "",
+          email: "",
+          telefono: "",
+          servizio: "",
+          messaggio: "",
+        });
       } else {
         setSubmitStatus("error");
       }
@@ -235,28 +310,28 @@ export default function HomeEN() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       {/* Premium Dark Header */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-slate-900/80 backdrop-blur-2xl shadow-2xl shadow-black/20 border-b border-white/5"
-          : "bg-gradient-to-b from-slate-900 to-transparent"
-      }`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "bg-slate-900/80 backdrop-blur-2xl shadow-2xl shadow-black/20 border-b border-white/5"
+            : "bg-gradient-to-b from-slate-900 to-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-22 lg:h-28">
-            {/* Logo + Brand Name */}
-            <a href="/en" className="flex items-center">
+          <div className="flex items-center justify-between h-20 lg:h-28 min-w-0">
+            <Link href="/en" className="flex items-center min-w-0 max-w-[78%]">
               <Image
                 src="https://ugc.same-assets.com/ifjX7h6TvXavA5CsHzk5-IuqMdmC7CjQ.png"
                 alt="ProfitSignal"
                 width={230}
                 height={65}
-                className="h-12 w-auto lg:h-14 object-contain"
+                className="h-10 sm:h-12 w-auto max-w-full object-contain"
                 priority
               />
-            </a>
+            </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-12 ml-16">
               {navLinks.map((link) => {
                 const sectionId = link.href.replace("#", "");
@@ -266,23 +341,21 @@ export default function HomeEN() {
                     key={link.href}
                     href={link.href}
                     className={`text-sm font-medium transition-all duration-300 relative group ${
-                      isActive
-                        ? "text-blue-400"
-                        : "text-white/90 hover:text-blue-300"
+                      isActive ? "text-blue-400" : "text-white/90 hover:text-blue-300"
                     }`}
                   >
                     {link.label}
-                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`} />
+                    <span
+                      className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
                   </a>
                 );
               })}
             </div>
 
-            {/* Language Switcher + CTA Button */}
-            <div className="flex items-center gap-4">
-              {/* Language Switcher */}
+            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
               <div className="hidden sm:flex items-center gap-1 text-sm font-medium">
                 <Link
                   href="/"
@@ -291,19 +364,18 @@ export default function HomeEN() {
                   IT
                 </Link>
                 <span className="text-white/30">|</span>
-                <span className="px-2 py-1 text-blue-400 font-semibold">
-                  EN
-                </span>
+                <span className="px-2 py-1 text-blue-400 font-semibold">EN</span>
               </div>
 
               <Button
                 className="hidden sm:inline-flex bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] px-6 py-5 rounded-xl font-medium"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() =>
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 Book a Consultation
               </Button>
 
-              {/* Mobile Menu Button */}
               <button
                 className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -315,7 +387,6 @@ export default function HomeEN() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -324,7 +395,6 @@ export default function HomeEN() {
             className="lg:hidden bg-slate-900 border-t border-white/10"
           >
             <div className="px-4 py-6 space-y-4">
-              {/* Mobile Language Switcher */}
               <div className="flex items-center gap-2 text-sm font-medium pb-4 border-b border-white/10">
                 <Link
                   href="/"
@@ -333,9 +403,7 @@ export default function HomeEN() {
                   IT
                 </Link>
                 <span className="text-white/30">|</span>
-                <span className="px-3 py-2 text-blue-400 font-semibold">
-                  EN
-                </span>
+                <span className="px-3 py-2 text-blue-400 font-semibold">EN</span>
               </div>
 
               {navLinks.map((link) => {
@@ -346,9 +414,7 @@ export default function HomeEN() {
                     key={link.href}
                     href={link.href}
                     className={`block text-lg font-medium py-2 transition-colors duration-300 ${
-                      isActive
-                        ? "text-blue-400"
-                        : "text-white/90 hover:text-blue-300"
+                      isActive ? "text-blue-400" : "text-white/90 hover:text-blue-300"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -356,11 +422,12 @@ export default function HomeEN() {
                   </a>
                 );
               })}
+
               <Button
-                className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl py-6"
+                className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl py-6 whitespace-normal break-words text-center"
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 Book a Free Consultation
@@ -372,28 +439,27 @@ export default function HomeEN() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-          <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+          <div className="absolute top-16 right-[-20%] sm:right-20 w-[260px] h-[260px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
+          <div className="absolute bottom-16 left-[-20%] sm:left-20 w-[220px] h-[220px] sm:w-[400px] sm:h-[400px] bg-purple-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:60px_60px]" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            {/* Hero Badge */}
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
-              <span className="text-base font-semibold text-blue-300 tracking-wide">Digital Growth Partner</span>
+            <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10 max-w-full">
+              <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
+                Digital Growth Partner
+              </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] sm:leading-tight break-words">
               <span className="text-white">Websites and digital systems</span>
               <br />
               <span className="text-white">designed to </span>
@@ -405,18 +471,18 @@ export default function HomeEN() {
               <span className="text-gray-400">not just traffic.</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-400 leading-relaxed">
+            <p className="max-w-3xl mx-auto text-base sm:text-xl text-gray-400 leading-relaxed px-1">
               We help businesses and professionals grow online with high-converting websites,
               lead generation systems, and measurable digital strategies.
             </p>
 
-            {/* CTA */}
-            <div className="pt-6">
+            <div className="pt-4 sm:pt-6">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-lg px-10 py-7 rounded-xl font-medium"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full sm:w-auto max-w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 rounded-xl font-medium whitespace-normal break-words text-center"
+                onClick={() =>
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 Book a Free Consultation
               </Button>
@@ -424,8 +490,7 @@ export default function HomeEN() {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
           <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
             <div className="w-1 h-2 bg-white/50 rounded-full" />
           </div>
@@ -433,9 +498,9 @@ export default function HomeEN() {
       </section>
 
       {/* Our Method Section */}
-      <section id="method" className="py-32 lg:py-40 bg-white">
+      <section id="method" className="py-24 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-24">
+          <AnimatedSection className="text-center mb-16 sm:mb-24">
             <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
               Our Approach
             </span>
@@ -453,25 +518,25 @@ export default function HomeEN() {
                 num: "01",
                 icon: <AnalysisIcon />,
                 title: "Analysis",
-                desc: "We study your market and online positioning."
+                desc: "We study your market and online positioning.",
               },
               {
                 num: "02",
                 icon: <StrategyIcon />,
                 title: "Strategy",
-                desc: "We design a digital system focused on conversion."
+                desc: "We design a digital system focused on conversion.",
               },
               {
                 num: "03",
                 icon: <ImplementIcon />,
                 title: "Implementation",
-                desc: "We build your website, funnels, and acquisition channels."
+                desc: "We build your website, funnels, and acquisition channels.",
               },
               {
                 num: "04",
                 icon: <OptimizeIcon />,
                 title: "Optimization",
-                desc: "We monitor data and improve performance over time."
+                desc: "We monitor data and improve performance over time.",
               },
             ].map((step, i) => (
               <motion.div
@@ -480,18 +545,18 @@ export default function HomeEN() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
                 viewport={{ once: true }}
-                className="relative group"
+                className="relative group min-w-0"
               >
-                <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
                   <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
                     {step.num}
                   </div>
-                  <div className="relative">
+                  <div className="relative min-w-0">
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6">
                       {step.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{step.desc}</p>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">{step.title}</h3>
+                    <p className="text-gray-600 leading-relaxed break-words">{step.desc}</p>
                   </div>
                 </div>
               </motion.div>
@@ -501,9 +566,9 @@ export default function HomeEN() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-32 lg:py-40 bg-slate-900">
+      <section id="services" className="py-24 lg:py-40 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-24">
+          <AnimatedSection className="text-center mb-16 sm:mb-24">
             <span className="inline-block text-sm font-semibold text-blue-400 tracking-wider uppercase mb-4">
               What We Do
             </span>
@@ -521,19 +586,19 @@ export default function HomeEN() {
                 icon: <WebsiteIcon />,
                 title: "High-Converting Websites",
                 desc: "Websites designed to turn visitors into leads and customers. Not simple showcases, but real business tools.",
-                features: ["Conversion-focused design", "Mobile optimized", "SEO-ready"]
+                features: ["Conversion-focused design", "Mobile optimized", "SEO-ready"],
               },
               {
                 icon: <LeadGenIcon />,
                 title: "Lead Generation Systems",
                 desc: "Digital strategies to generate qualified inquiries and appointments consistently and predictably.",
-                features: ["Acquisition funnels", "Optimized landing pages", "Marketing automations"]
+                features: ["Acquisition funnels", "Optimized landing pages", "Marketing automations"],
               },
               {
                 icon: <AcquisitionIcon />,
                 title: "Client Acquisition Strategies",
                 desc: "Campaigns and digital systems to increase the flow of new clients and maximize ROI.",
-                features: ["Targeted ad campaigns", "Content strategy", "Analytics & reporting"]
+                features: ["Targeted ad campaigns", "Content strategy", "Analytics & reporting"],
               },
             ].map((service, i) => (
               <motion.div
@@ -542,19 +607,19 @@ export default function HomeEN() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 * i }}
                 viewport={{ once: true }}
-                className="group"
+                className="group min-w-0"
               >
-                <div className="h-full p-8 lg:p-10 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500">
+                <div className="h-full p-8 lg:p-10 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 overflow-hidden">
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                  <p className="text-gray-400 mb-6 leading-relaxed">{service.desc}</p>
+                  <h3 className="text-2xl font-bold text-white mb-4 break-words">{service.title}</h3>
+                  <p className="text-gray-400 mb-6 leading-relaxed break-words">{service.desc}</p>
                   <ul className="space-y-3">
                     {service.features.map((feature, j) => (
-                      <li key={j} className="flex items-center gap-3 text-gray-300">
+                      <li key={j} className="flex items-center gap-3 text-gray-300 min-w-0">
                         <CheckIcon />
-                        <span>{feature}</span>
+                        <span className="break-words">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -566,10 +631,10 @@ export default function HomeEN() {
       </section>
 
       {/* Who We Work With Section */}
-      <section className="py-32 lg:py-40 bg-gray-50">
+      <section className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            <AnimatedSection className="min-w-0">
               <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
                 Our Clients
               </span>
@@ -584,8 +649,8 @@ export default function HomeEN() {
               <div className="space-y-4">
                 {[
                   "Local businesses that want to dominate their market",
-                  "Professionals who desire more qualified clients",
-                  "Small and medium enterprises ready to scale",
+                  "Professionals who want more qualified clients",
+                  "Small and medium-sized companies ready to scale",
                   "Businesses that want to generate clients online",
                 ].map((item, i) => (
                   <motion.div
@@ -594,29 +659,40 @@ export default function HomeEN() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 * i }}
                     viewport={{ once: true }}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-white shadow-sm"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-white shadow-sm min-w-0 overflow-hidden"
                   >
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={3}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
-                    <span className="text-slate-700 font-medium">{item}</span>
+                    <span className="text-slate-700 font-medium text-base sm:text-lg leading-snug break-words min-w-0">
+                      {item}
+                    </span>
                   </motion.div>
                 ))}
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2} className="relative">
+            <AnimatedSection delay={0.2} className="relative min-w-0">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl blur-3xl opacity-10" />
-              <div className="relative bg-white rounded-xl p-10 shadow-xl border border-gray-100">
+              <div className="relative bg-white rounded-xl p-6 sm:p-10 shadow-xl border border-gray-100 overflow-hidden max-w-full">
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Want to know if we're the right fit?</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 break-words">
+                    Want to know if we&apos;re the right fit?
+                  </h3>
                   <p className="text-gray-600">Book a free 15-minute call</p>
                 </div>
                 <Button
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-6 rounded-xl text-lg font-medium"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full max-w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-5 sm:py-6 rounded-xl text-base sm:text-lg font-medium whitespace-normal break-words text-center px-4 sm:px-6"
+                  onClick={() =>
+                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                  }
                 >
                   Request a Free Strategic Consultation
                 </Button>
@@ -627,24 +703,24 @@ export default function HomeEN() {
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="py-32 lg:py-40 bg-white">
+      <section id="about" className="py-24 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection className="order-2 lg:order-1">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <AnimatedSection className="order-2 lg:order-1 min-w-0">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl blur-2xl" />
 
-                <div className="relative bg-slate-900 rounded-xl p-10 lg:p-14 min-h-[520px] flex items-center">
-                  <blockquote className="text-3xl lg:text-5xl text-white font-light leading-[1.2] italic max-w-[680px]">
-                    “We don't just build websites. We create digital systems designed to generate business opportunities.”
+                <div className="relative bg-slate-900 rounded-xl p-8 sm:p-10 lg:p-14 min-h-[360px] sm:min-h-[520px] flex items-center overflow-hidden">
+                  <blockquote className="text-2xl sm:text-3xl lg:text-5xl text-white font-light leading-[1.2] italic max-w-[680px] break-words">
+                    “We don&apos;t just build websites. We create digital systems designed to generate business opportunities.”
                   </blockquote>
                 </div>
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2} className="order-1 lg:order-2 space-y-8">
+            <AnimatedSection delay={0.2} className="order-1 lg:order-2 space-y-8 min-w-0">
               <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase">
-                company
+                Company
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
                 Your Partner for Digital Growth
@@ -655,7 +731,7 @@ export default function HomeEN() {
                   to help businesses and professionals turn their online presence into real clients.
                 </p>
                 <p>
-                  We don't just create aesthetically beautiful websites.
+                  We don&apos;t just create aesthetically beautiful websites.
                   We design strategic digital systems that work for you,
                   generating leads and business opportunities consistently.
                 </p>
@@ -670,21 +746,23 @@ export default function HomeEN() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 lg:py-40 relative overflow-hidden">
+      <section className="py-24 lg:py-40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:50px_50px]" />
 
-        <AnimatedSection className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+        <AnimatedSection className="relative z-10 max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center min-w-0">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight break-words">
             Ready to Grow Your Business Online?
           </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
             Discover how we can help you generate more clients with a customized digital system.
           </p>
           <Button
             size="lg"
-            className="bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 shadow-2xl shadow-black/30 hover:shadow-black/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-lg px-10 py-7 rounded-xl font-semibold border border-white/20"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="w-full sm:w-auto max-w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 shadow-2xl shadow-black/30 hover:shadow-black/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 rounded-xl font-semibold border border-white/20 whitespace-normal break-words text-center"
+            onClick={() =>
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+            }
           >
             Book a Free Consultation
           </Button>
@@ -692,14 +770,14 @@ export default function HomeEN() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 lg:py-40 bg-gray-50">
+      <section id="contact" className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-20">
+          <AnimatedSection className="text-center mb-16 sm:mb-20">
             <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
               Contact Us
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Let's Start Working Together
+              Let&apos;s Start Working Together
             </h2>
             <p className="max-w-2xl mx-auto text-lg text-gray-600">
               Fill out the form to request a free strategic consultation
@@ -707,9 +785,8 @@ export default function HomeEN() {
           </AnimatedSection>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Contact Form */}
-            <AnimatedSection delay={0.1}>
-              <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-8 sm:p-10">
+            <AnimatedSection delay={0.1} className="min-w-0">
+              <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-6 sm:p-8 lg:p-10 overflow-hidden">
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">Request a Consultation</h3>
 
                 {submitStatus === "success" && (
@@ -719,7 +796,7 @@ export default function HomeEN() {
                     className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700"
                   >
                     <p className="font-medium">Request sent successfully!</p>
-                    <p className="text-sm">We'll contact you within 24 hours.</p>
+                    <p className="text-sm">We&apos;ll contact you within 24 hours.</p>
                   </motion.div>
                 )}
 
@@ -730,7 +807,7 @@ export default function HomeEN() {
                     className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700"
                   >
                     <p className="font-medium">An error occurred.</p>
-                    <p className="text-sm">Please try again or contact us directly via email.</p>
+                    <p className="text-sm">Please try again or contact us directly by email.</p>
                   </motion.div>
                 )}
 
@@ -822,13 +899,25 @@ export default function HomeEN() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-lg py-6 rounded-xl disabled:opacity-70 font-medium"
+                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg py-5 sm:py-6 rounded-xl disabled:opacity-70 font-medium whitespace-normal break-words text-center"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
                         <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            fill="none"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
                         </svg>
                         Sending...
                       </span>
@@ -840,30 +929,29 @@ export default function HomeEN() {
               </div>
             </AnimatedSection>
 
-            {/* Contact Info */}
-            <AnimatedSection delay={0.2} className="space-y-6">
+            <AnimatedSection delay={0.2} className="space-y-6 min-w-0">
               <div className="grid gap-4">
                 <a
                   href="mailto:profitsignalmedia@gmail.com"
-                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300 min-w-0"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white shrink-0">
                     <MailIcon />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold text-slate-900 mb-1">Email</h3>
-                    <p className="text-gray-600">profitsignalmedia@gmail.com</p>
+                    <p className="text-gray-600 break-all">profitsignalmedia@gmail.com</p>
                   </div>
                 </a>
 
                 <a
                   href="tel:+393920314427"
-                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300 min-w-0"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white shrink-0">
                     <PhoneIcon />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold text-slate-900 mb-1">Phone</h3>
                     <p className="text-gray-600">+39 392 031 4427</p>
                   </div>
@@ -873,32 +961,32 @@ export default function HomeEN() {
                   href="https://instagram.com/profitsignalmedia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-purple-200 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-5 p-6 rounded-xl bg-white border border-gray-100 hover:border-purple-200 shadow-sm hover:shadow-lg transition-all duration-300 min-w-0"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white shrink-0">
                     <InstagramIcon />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold text-slate-900 mb-1">Instagram</h3>
                     <p className="text-gray-600">@profitsignalmedia</p>
                   </div>
                 </a>
               </div>
 
-              <div className="p-8 rounded-xl bg-slate-900 text-white">
+              <div className="p-8 rounded-xl bg-slate-900 text-white overflow-hidden">
                 <h3 className="text-xl font-bold mb-4">What Happens Next?</h3>
                 <ol className="space-y-4">
                   {[
                     "You receive our confirmation within 24 hours",
                     "We schedule a free strategic call",
-                    "We analyze your needs together",
-                    "We present you a customized proposal"
+                    "We review your needs together",
+                    "We present a customized proposal",
                   ].map((step, i) => (
-                    <li key={i} className="flex items-start gap-4">
+                    <li key={i} className="flex items-start gap-4 min-w-0">
                       <span className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
                         {i + 1}
                       </span>
-                      <span className="text-gray-300">{step}</span>
+                      <span className="text-gray-300 break-words">{step}</span>
                     </li>
                   ))}
                 </ol>
@@ -909,18 +997,17 @@ export default function HomeEN() {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 bg-slate-900 text-white">
+      <footer className="py-16 sm:py-20 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
-            {/* Logo + Description */}
-            <div>
+            <div className="min-w-0">
               <div className="mb-6">
                 <Image
                   src="https://ugc.same-assets.com/SXdB71-Hv5w9TGoHY8aB8PtFIZbAHVap.png"
                   alt="ProfitSignal"
                   width={230}
                   height={65}
-                  className="w-auto h-12 object-contain"
+                  className="w-auto h-12 object-contain max-w-full"
                 />
               </div>
 
@@ -929,16 +1016,12 @@ export default function HomeEN() {
               </p>
             </div>
 
-            {/* Quick Links */}
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-3">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
+                    <a href={link.href} className="text-gray-400 hover:text-white transition-colors">
                       {link.label}
                     </a>
                   </li>
@@ -946,7 +1029,6 @@ export default function HomeEN() {
               </ul>
             </div>
 
-            {/* Social */}
             <div>
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex items-center gap-4">
@@ -987,10 +1069,7 @@ export default function HomeEN() {
               <Link href="/en/privacy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link
-                href="/en/cookie-policy"
-                className="hover:text-white transition-colors"
-              >
+              <Link href="/en/cookie-policy" className="hover:text-white transition-colors">
                 Cookie Policy
               </Link>
             </div>
@@ -1003,13 +1082,13 @@ export default function HomeEN() {
         href="https://wa.me/393920314427?text=Hello!%20I%20would%20like%20information%20about%20your%20services."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 left-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 group"
+        className="fixed bottom-24 sm:bottom-8 left-4 sm:left-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 group"
         aria-label="Contact us on WhatsApp"
       >
         <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
-        <span className="absolute left-16 bg-slate-900 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
+        <span className="hidden md:block absolute left-16 bg-slate-900 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
           Message us on WhatsApp
         </span>
       </a>
@@ -1020,7 +1099,7 @@ export default function HomeEN() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
+          className="fixed bottom-24 sm:bottom-8 right-4 sm:right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
           aria-label="Back to top"
         >
           <ArrowUpIcon />
