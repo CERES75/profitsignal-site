@@ -843,7 +843,7 @@ className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden
 <button
 type="button"
 onClick={() => setOpenFaq(openFaq === index ? null : index)}
-className="w-full flex items-center justify-between text-left px-6 py-5"
+className="w-full flex items-center justify-between text-left px-6 py-5 rounded-xl transition-all duration-200 hover:bg-blue-50 hover:shadow-sm"
 >
 
 <span className="text-lg font-medium">
