@@ -1066,7 +1066,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/profile.php?id=61587405156228"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
@@ -1075,7 +1075,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/alessandro-ceresoli-78b27a3b4/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
