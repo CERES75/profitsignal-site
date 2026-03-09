@@ -5,7 +5,7 @@ import { useState, useEffect, useRef, FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-
+import { ChevronDown } from "lucide-react";
 // Animated Section Component
 const AnimatedSection = ({
   children,
@@ -201,7 +201,36 @@ export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+// FAQ STATE
+const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+const faqItems = [
+{
+question: "Quanto tempo serve per realizzare il sito?",
+answer:
+"Di solito tra 2 e 4 settimane. Il tempo dipende dalla complessità del progetto.",
+},
+{
+question: "Il sito sarà progettato per generare contatti?",
+answer:
+"Sì. Ogni sito è progettato con una struttura orientata alla conversione per trasformare i visitatori in contatti reali.",
+},
+{
+question: "In cosa è diverso da un normale sito web?",
+answer:
+"Molti siti sono solo una vetrina. Noi progettiamo sistemi digitali pensati per generare clienti e opportunità reali.",
+},
+{
+question: "Offrite supporto dopo la pubblicazione?",
+answer:
+"Sì. Possiamo continuare a supportarti con miglioramenti, aggiornamenti e ottimizzazioni.",
+},
+{
+question: "Come posso iniziare?",
+answer:
+"Puoi prenotare una consulenza gratuita di 15 minuti per capire se possiamo aiutarti.",
+},
+];
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -788,7 +817,65 @@ export default function Home() {
           </Button>
         </AnimatedSection>
       </section>
+{/* FAQ SECTION */}
 
+<section className="py-24">
+<div className="max-w-4xl mx-auto px-6">
+
+<div className="text-center mb-16">
+<h2 className="text-3xl md:text-4xl font-bold mb-4">
+Domande frequenti
+</h2>
+<p className="text-muted-foreground">
+Risposte alle domande più comuni.
+</p>
+</div>
+
+<div className="space-y-4">
+
+{faqItems.map((item, index) => (
+
+<div
+key={index}
+className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden"
+>
+
+<button
+type="button"
+onClick={() => setOpenFaq(openFaq === index ? null : index)}
+className="w-full flex items-center justify-between text-left px-6 py-5"
+>
+
+<span className="text-lg font-medium">
+{item.question}
+</span>
+
+<ChevronDown
+className={`w-5 h-5 transition-transform ${
+openFaq === index ? "rotate-180" : ""
+}`}
+/>
+
+</button>
+
+{openFaq === index && (
+
+<div className="px-6 pb-6 text-gray-600 leading-relaxed">
+
+{item.answer}
+
+</div>
+
+)}
+
+</div>
+
+))}
+
+</div>
+
+</div>
+</section>
       {/* Contatti */}
       <section id="contatti" className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
