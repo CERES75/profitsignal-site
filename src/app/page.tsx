@@ -712,7 +712,7 @@ export default function Home() {
                     document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  Richiedi una consulenza strategica gratuita
+                  PRENOTA LA CONSULENZA
                 </Button>
               </div>
             </AnimatedSection>
@@ -784,7 +784,7 @@ export default function Home() {
               document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            Prenota una consulenza gratuita
+            PRENOTA LA CONSULENZA GRATUITA
           </Button>
         </AnimatedSection>
       </section>
