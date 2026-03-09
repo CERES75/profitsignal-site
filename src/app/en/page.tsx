@@ -484,7 +484,7 @@ export default function HomeEN() {
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Free consultation
+                START YOUR GROWTH
               </Button>
             </div>
           </motion.div>
