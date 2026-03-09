@@ -5,7 +5,7 @@ import { useState, useEffect, useRef, FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-
+import { ChevronDown } from "lucide-react";
 // Animated Section Component
 const AnimatedSection = ({
   children,
