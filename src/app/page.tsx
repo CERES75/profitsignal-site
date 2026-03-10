@@ -523,7 +523,104 @@ answer:
   </div>
 </section>
 
-  
+  {/* Growth System Section */}
+<section className="py-24 lg:py-36 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    {/* Title */}
+    <div className="text-center mb-20">
+      <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+        Our System
+      </span>
+
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+        ProfitSignal Growth System
+      </h2>
+
+      <p className="max-w-3xl mx-auto text-lg text-gray-600">
+        Analizziamo il tuo business, individuiamo i punti deboli e costruiamo un sistema digitale completo progettato per generare clienti.
+      </p>
+    </div>
+
+    {/* Steps */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      {/* Step 1 */}
+      <div className="group p-8 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div className="text-4xl font-bold text-blue-500 mb-4">01</div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3">Analisi</h3>
+        <p className="text-gray-600">
+          Studiamo il tuo sito, la tua presenza online e il mercato per individuare i punti deboli che limitano la crescita.
+        </p>
+      </div>
+
+      {/* Step 2 */}
+      <div className="group p-8 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div className="text-4xl font-bold text-blue-500 mb-4">02</div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3">Strategia</h3>
+        <p className="text-gray-600">
+          Definiamo un piano digitale chiaro per posizionare il tuo business e generare nuovi clienti.
+        </p>
+      </div>
+
+      {/* Step 3 */}
+      <div className="group p-8 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div className="text-4xl font-bold text-blue-500 mb-4">03</div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3">Costruzione</h3>
+        <p className="text-gray-600">
+          Realizziamo il sistema digitale completo: sito web, brand, gestione social e pubblicità online.
+        </p>
+      </div>
+
+      {/* Step 4 */}
+      <div className="group p-8 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div className="text-4xl font-bold text-blue-500 mb-4">04</div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3">Ottimizzazione</h3>
+        <p className="text-gray-600">
+          Monitoriamo dati e risultati per migliorare costantemente le performance e aumentare clienti.
+        </p>
+      </div>
+
+    </div>
+
+    {/* Included Services */}
+    <div className="mt-24 text-center">
+
+      <h3 className="text-2xl font-bold text-slate-900 mb-10">
+        Cosa include il sistema
+      </h3>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+
+        <div className="p-6 rounded-xl bg-white border shadow-sm">
+          Sito web ad alta conversione
+        </div>
+
+        <div className="p-6 rounded-xl bg-white border shadow-sm">
+          Brand e identità visiva
+        </div>
+
+        <div className="p-6 rounded-xl bg-white border shadow-sm">
+          Gestione Instagram e Facebook
+        </div>
+
+        <div className="p-6 rounded-xl bg-white border shadow-sm">
+          Campagne pubblicitarie online
+        </div>
+
+      </div>
+
+      {/* CTA */}
+      <div className="mt-12">
+        <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-10 py-5 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300">
+          SCOPRI IL SISTEMA COMPLETO
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* Metodo */}
       <section id="metodo" className="py-24 lg:py-40 bg-white">
