@@ -500,15 +500,12 @@ answer:
         Fai crescere il tuo business
       </h1>
 
-      <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 leading-relaxed">
+      <p className="max-w-4xl mx-auto text-xl sm:text-2xl text-gray-300 leading-relaxed">
         Siti web, brand, social e pubblicità progettati per{" "}
         <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold">
           generare clienti
-        </span>.
-      </p>
-
-      <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-400 leading-relaxed">
-        Strategie digitali misurabili per aziende e professionisti.
+        </span>{" "}
+        con strategie digitali misurabili per aziende e professionisti.
       </p>
 
       <div className="pt-6">
