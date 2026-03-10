@@ -337,10 +337,16 @@ answer:
   };
 
   const navLinks = [
-    { href: "#metodo", label: "Metodo" },
-    { href: "#servizi", label: "Servizi" },
-    { href: "#chi-siamo", label: "Chi siamo" },
-    { href: "#contatti", label: "Contatti" },
+
+  { href: "#metodo", label: "Metodo" },
+  { href: "#servizi", label: "Servizi" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#chi-siamo", label: "Chi siamo" },
+  { href: "#contatti", label: "Contatti" },
+];
+    
+    
+    
   ];
 
   return (
@@ -819,7 +825,7 @@ answer:
       </section>
 {/* FAQ SECTION */}
 
-<section className="py-24">
+<section id="faq" className="py-24">
 <div className="max-w-4xl mx-auto px-6">
 
 <div className="text-center mb-16">
