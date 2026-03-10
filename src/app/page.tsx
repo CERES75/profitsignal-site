@@ -345,7 +345,6 @@ answer:
   { href: "#chi-siamo", label: "Chi siamo" },
   { href: "#contatti", label: "Contatti" }
 
-]
 ];
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
