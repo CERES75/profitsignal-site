@@ -473,59 +473,64 @@ answer:
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-          <div className="absolute top-16 right-[-20%] sm:right-20 w-[260px] h-[260px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
-          <div className="absolute bottom-16 left-[-20%] sm:left-20 w-[220px] h-[220px] sm:w-[400px] sm:h-[400px] bg-purple-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:60px_60px]" />
-        </div>
+    
+<section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+  
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+    <div className="absolute top-16 right-[-20%] sm:right-20 w-[260px] h-[260px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
+    <div className="absolute bottom-16 left-[-20%] sm:left-20 w-[220px] h-[220px] sm:w-[400px] sm:h-[400px] bg-purple-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:60px_60px]" />
+  </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-20 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
-            <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10 max-w-full">
-              <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
-                Partner per la crescita digitale
-              </span>
-            </div>
+  <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-20 text-center">
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] sm:leading-tight break-words">
-  <span className="text-white">Analisi. Strategia. Crescita.</span>
-</h1>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="space-y-8"
+    >
 
-            <p className="max-w-3xl mx-auto text-base sm:text-xl text-gray-400 leading-relaxed px-1">
-  Dal brand ai social, dal sito web alla pubblicità: costruiamo sistemi digitali progettati per{" "}
-  <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-    generare clienti
-  </span>{" "}
-  e far crescere il tuo business.
-</p>
+      <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
+        <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
+          Digital Growth Partner
+        </span>
+      </div>
 
-            <div className="pt-4 sm:pt-6">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto max-w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 rounded-xl font-medium whitespace-normal break-words text-center"
-                onClick={() =>
-                  document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                OTTIENI PIÙ CLIENTI
-              </Button>
-            </div>
-          </motion.div>
-        </div>
+      <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.05] text-white">
+        Analisi. Strategia. Crescita.
+      </h1>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
-          <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-            <div className="w-1 h-2 bg-white/50 rounded-full" />
-          </div>
-        </div>
-      </section>
+      <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 leading-relaxed">
+        Dal brand ai social, dal sito web alla pubblicità: costruiamo sistemi digitali progettati per{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold">
+          generare clienti
+        </span>{" "}
+        e far crescere il tuo business.
+      </p>
+
+      <p className="text-sm text-gray-500">
+        Strategie digitali misurabili per aziende e professionisti.
+      </p>
+
+      <div className="pt-6">
+        <Button
+          size="lg"
+          className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.04] text-lg px-10 py-6 rounded-xl font-semibold"
+          onClick={() =>
+            document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Ottieni più clienti
+        </Button>
+      </div>
+
+    </motion.div>
+
+  </div>
+</section>
+  
 
       {/* Metodo */}
       <section id="metodo" className="py-24 lg:py-40 bg-white">
