@@ -472,8 +472,9 @@ answer:
         )}
       </nav>
 
-      {/* Hero Section */}
+      
     
+{/* Hero Section */}
 <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
   
   <div className="absolute inset-0 overflow-hidden">
@@ -499,15 +500,14 @@ answer:
       </div>
 
       <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.05] text-white">
-        Analisi. Strategia. Crescita.
+        Fai crescere il tuo business
       </h1>
 
       <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 leading-relaxed">
-        Dal brand ai social, dal sito web alla pubblicità: costruiamo sistemi digitali progettati per{" "}
+        Siti web, brand, social e pubblicità progettati per{" "}
         <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold">
           generare clienti
-        </span>{" "}
-        e far crescere il tuo business.
+        </span>.
       </p>
 
       <p className="text-sm text-gray-500">
@@ -517,12 +517,12 @@ answer:
       <div className="pt-6">
         <Button
           size="lg"
-          className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.04] text-lg px-10 py-6 rounded-xl font-semibold"
+          className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.04] text-lg px-10 py-6 rounded-xl font-semibold tracking-wide"
           onClick={() =>
             document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
           }
         >
-          Ottieni più clienti
+          OTTIENI PIÙ CLIENTI
         </Button>
       </div>
 
@@ -530,6 +530,7 @@ answer:
 
   </div>
 </section>
+
   
 
       {/* Metodo */}
