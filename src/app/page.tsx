@@ -523,105 +523,123 @@ answer:
   </div>
 </section>
 
-  {/* Growth System Section */}
-<section className="py-24 lg:py-36 bg-white">
+  {/* Pacchetto Crescita */}
+<section id="pacchetto-crescita" className="py-24 lg:py-40 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    {/* Title */}
-    <div className="text-center mb-20">
+    <AnimatedSection className="text-center mb-16 sm:mb-24">
       <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
-        Our System
+        Pacchetto Crescita
       </span>
-
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-        ProfitSignal Growth System
+        Un pacchetto crescita su misura per il tuo business
       </h2>
-
       <p className="max-w-3xl mx-auto text-lg text-gray-600">
-        Analizziamo il tuo business, individuiamo i punti deboli e costruiamo un sistema digitale completo progettato per generare clienti.
+        Analizziamo la tua situazione, individuiamo i punti deboli e interveniamo
+        dove manca struttura o dove c’è margine di miglioramento, costruendo un
+        pacchetto completo progettato per generare clienti.
       </p>
-    </div>
+    </AnimatedSection>
 
-    {/* Steps */}
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-      {/* Step 1 */}
-      <div className="group p-8 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div className="text-4xl font-bold text-blue-500 mb-4">01</div>
-        <h3 className="text-xl font-bold text-slate-900 mb-3">Analisi</h3>
-        <p className="text-gray-600">
-          Studiamo il tuo sito, la tua presenza online e il mercato per individuare i punti deboli che limitano la crescita.
-        </p>
-      </div>
-
-      {/* Step 2 */}
-      <div className="group p-8 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div className="text-4xl font-bold text-blue-500 mb-4">02</div>
-        <h3 className="text-xl font-bold text-slate-900 mb-3">Strategia</h3>
-        <p className="text-gray-600">
-          Definiamo un piano digitale chiaro per posizionare il tuo business e generare nuovi clienti.
-        </p>
-      </div>
-
-      {/* Step 3 */}
-      <div className="group p-8 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div className="text-4xl font-bold text-blue-500 mb-4">03</div>
-        <h3 className="text-xl font-bold text-slate-900 mb-3">Costruzione</h3>
-        <p className="text-gray-600">
-          Realizziamo il sistema digitale completo: sito web, brand, gestione social e pubblicità online.
-        </p>
-      </div>
-
-      {/* Step 4 */}
-      <div className="group p-8 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div className="text-4xl font-bold text-blue-500 mb-4">04</div>
-        <h3 className="text-xl font-bold text-slate-900 mb-3">Ottimizzazione</h3>
-        <p className="text-gray-600">
-          Monitoriamo dati e risultati per migliorare costantemente le performance e aumentare clienti.
-        </p>
-      </div>
-
+      {[
+        {
+          num: "01",
+          icon: <AnalysisIcon />,
+          title: "Analisi della situazione",
+          desc: "Studiamo il tuo business, la tua presenza online e il tuo posizionamento per capire cosa manca e cosa frena davvero la crescita.",
+        },
+        {
+          num: "02",
+          icon: <StrategyIcon />,
+          title: "Strategia su misura",
+          desc: "Definiamo un pacchetto crescita personalizzato, intervenendo solo dove serve davvero per migliorare risultati e acquisizione clienti.",
+        },
+        {
+          num: "03",
+          icon: <ImplementIcon />,
+          title: "Costruzione del pacchetto",
+          desc: "Realizziamo ciò che serve alla tua crescita: sito web, brand, gestione Instagram e Facebook, pubblicità online e strumenti digitali.",
+        },
+        {
+          num: "04",
+          icon: <OptimizeIcon />,
+          title: "Ottimizzazione continua",
+          desc: "Monitoriamo i risultati e miglioriamo nel tempo il pacchetto per aumentare richieste, clienti e performance del business.",
+        },
+      ].map((step, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 * i }}
+          viewport={{ once: true }}
+          className="relative group min-w-0"
+        >
+          <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
+            <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
+              {step.num}
+            </div>
+            <div className="relative min-w-0">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6">
+                {step.icon}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">
+                {step.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed break-words">{step.desc}</p>
+            </div>
+          </div>
+        </motion.div>
+      ))}
     </div>
 
-    {/* Included Services */}
-    <div className="mt-24 text-center">
+    <AnimatedSection delay={0.2} className="mt-16 sm:mt-20">
+      <div className="rounded-2xl bg-slate-900 p-8 sm:p-10 lg:p-12 shadow-2xl overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <span className="inline-block text-sm font-semibold text-blue-400 tracking-wider uppercase mb-4">
+              Cosa può includere
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-5">
+              Un pacchetto completo, costruito attorno alle esigenze del cliente
+            </h3>
+            <p className="text-gray-300 text-lg leading-relaxed">
+              Non proponiamo una soluzione standard: costruiamo un pacchetto
+              crescita personalizzato in base a ciò che serve davvero per far
+              crescere la tua attività online.
+            </p>
+          </div>
 
-      <h3 className="text-2xl font-bold text-slate-900 mb-10">
-        Cosa include il sistema
-      </h3>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-
-        <div className="p-6 rounded-xl bg-white border shadow-sm">
-          Sito web ad alta conversione
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              "Sito web ad alta conversione",
+              "Brand e identità visiva",
+              "Gestione Instagram e Facebook",
+              "Pubblicità online mirata",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="rounded-xl bg-white/5 border border-white/10 p-5 text-white"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="p-6 rounded-xl bg-white border shadow-sm">
-          Brand e identità visiva
+        <div className="mt-10 text-center">
+          <a href="#contatti" className="inline-block">
+            <Button
+              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-5 sm:py-6 rounded-xl text-base sm:text-lg font-medium whitespace-normal break-words text-center px-6 sm:px-10"
+            >
+              RICHIEDI IL TUO PACCHETTO CRESCITA
+            </Button>
+          </a>
         </div>
-
-        <div className="p-6 rounded-xl bg-white border shadow-sm">
-          Gestione Instagram e Facebook
-        </div>
-
-        <div className="p-6 rounded-xl bg-white border shadow-sm">
-          Campagne pubblicitarie online
-        </div>
-
       </div>
-
-      {/* CTA */}
-      <div className="mt-12">
-        <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-10 py-5 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300">
-          SCOPRI IL SISTEMA COMPLETO
-        </button>
-      </div>
-
-    </div>
-
+    </AnimatedSection>
   </div>
 </section>
-
       {/* Metodo */}
       <section id="metodo" className="py-24 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
