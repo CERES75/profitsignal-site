@@ -494,22 +494,17 @@ answer:
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] sm:leading-tight break-words">
-              <span className="text-white">Siti web e sistemi digitali</span>
-              <br />
-              <span className="text-white">progettati per </span>
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                generare clienti
-              </span>
-              <span className="text-white">,</span>
-              <br />
-              <span className="text-gray-400">non solo traffico.</span>
-            </h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] sm:leading-tight break-words">
+  <span className="text-white">Analisi. Strategia. Crescita.</span>
+</h1>
 
             <p className="max-w-3xl mx-auto text-base sm:text-xl text-gray-400 leading-relaxed px-1">
-              Aiutiamo aziende e professionisti a crescere online con siti web ad alta
-              conversione, sistemi di lead generation e strategie digitali misurabili.
-            </p>
+  Dal brand ai social, dal sito web alla pubblicità: costruiamo sistemi digitali progettati per{" "}
+  <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold">
+    generare clienti
+  </span>{" "}
+  e far crescere il tuo business.
+</p>
 
             <div className="pt-4 sm:pt-6">
               <Button
