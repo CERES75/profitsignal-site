@@ -527,7 +527,7 @@ answer:
 </section>
 
   {/* Pacchetto Crescita */}
-<section id="pacchetto-crescita" className="py-24 lg:py-40 bg-white">
+      <section id="pacchetto-crescita" className="py-24 lg:py-40 bg-gray-50">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <AnimatedSection className="text-center mb-16 sm:mb-24">
       <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
