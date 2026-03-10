@@ -734,85 +734,84 @@ const results = [
           </div>
         </div>
       </section>
-<AnimatedSection
-  id="risultati"
-  className="py-24 bg-gray-50 scroll-mt-32"
->
-  <div className="container mx-auto px-6">
-    <div className="max-w-3xl mx-auto text-center mb-16">
-      <motion.span
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-medium text-blue-700 shadow-sm"
-      >
-        Risultati
-      </motion.span>
+<section id="risultati" className="scroll-mt-32">
+  <AnimatedSection className="py-24 bg-gray-50">
+    <div className="container mx-auto px-6">
+      <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-medium text-blue-700 shadow-sm"
+        >
+          Risultati
+        </motion.span>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="mt-6 text-3xl md:text-4xl font-bold tracking-tight text-gray-900"
-      >
-        Risultati che il sistema ProfitSignal può generare
-      </motion.h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-6 text-3xl md:text-4xl font-bold tracking-tight text-gray-900"
+        >
+          Risultati che il sistema ProfitSignal può generare
+        </motion.h2>
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="mt-4 text-lg leading-relaxed text-gray-600"
-      >
-        Il nostro obiettivo è trasformare la tua presenza online in un flusso
-        costante di contatti qualificati attraverso un sistema progettato per
-        attrarre, convertire e ottimizzare.
-      </motion.p>
-    </div>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-4 text-lg leading-relaxed text-gray-600"
+        >
+          Il nostro obiettivo è trasformare la tua presenza online in un flusso
+          costante di contatti qualificati attraverso un sistema progettato per
+          attrarre, convertire e ottimizzare.
+        </motion.p>
+      </div>
 
-    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-      {results.map((item, index) => {
-        const Icon = item.icon;
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        {results.map((item, index) => {
+          const Icon = item.icon;
 
-        return (
-          <motion.div
-            key={item.number}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
-            className="group relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(59,130,246,0.12)]"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-transparent to-purple-50/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          return (
+            <motion.div
+              key={item.number}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="group relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(59,130,246,0.12)]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-transparent to-purple-50/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-            <div className="relative z-10">
-              <div className="mb-6 flex items-start justify-between gap-4">
-                <span className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                  {item.number}
-                </span>
+              <div className="relative z-10">
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <span className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                    {item.number}
+                  </span>
 
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-100 transition-transform duration-300 group-hover:scale-105">
-                  <Icon className="h-7 w-7" strokeWidth={2.1} />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-100 transition-transform duration-300 group-hover:scale-105">
+                    <Icon className="h-7 w-7" strokeWidth={2.1} />
+                  </div>
                 </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-gray-950">
+                  {item.title}
+                </h3>
+
+                <p className="mt-4 text-base leading-relaxed text-gray-600">
+                  {item.description}
+                </p>
               </div>
-
-              <h3 className="text-xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-gray-950">
-                {item.title}
-              </h3>
-
-              <p className="mt-4 text-base leading-relaxed text-gray-600">
-                {item.description}
-              </p>
-            </div>
-          </motion.div>
-        );
-      })}
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
-  </div>
-</AnimatedSection>
+  </AnimatedSection>
+</section>
       {/* Servizi */}
       <section id="servizi" className="py-24 lg:py-40 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
