@@ -476,7 +476,6 @@ answer:
     
 {/* Hero Section */}
 <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
-  
   <div className="absolute inset-0 overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
     <div className="absolute top-16 right-[-20%] sm:right-20 w-[260px] h-[260px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
@@ -485,14 +484,12 @@ answer:
   </div>
 
   <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-20 text-center">
-
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       className="space-y-8"
     >
-
       <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
         <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
           Digital Growth Partner
@@ -510,7 +507,7 @@ answer:
         </span>.
       </p>
 
-      <p className="text-sm text-gray-500">
+      <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-400 leading-relaxed">
         Strategie digitali misurabili per aziende e professionisti.
       </p>
 
@@ -525,9 +522,7 @@ answer:
           OTTIENI PIÙ CLIENTI
         </Button>
       </div>
-
     </motion.div>
-
   </div>
 </section>
 
