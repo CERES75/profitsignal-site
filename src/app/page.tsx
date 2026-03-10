@@ -737,6 +737,7 @@ const results = [
 <section id="risultati" className="scroll-mt-32">
   <AnimatedSection className="py-24 bg-gray-50">
     <div className="container mx-auto px-6">
+
       <div className="max-w-3xl mx-auto text-center mb-16">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
@@ -771,6 +772,7 @@ const results = [
         </motion.p>
       </div>
 
+
       <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
         {results.map((item, index) => {
           const Icon = item.icon;
@@ -787,14 +789,19 @@ const results = [
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-transparent to-purple-50/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
               <div className="relative z-10">
-                <div className="mb-6 flex items-start justify-between gap-4">
-                  <span className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+
+                <div className="mb-6 flex items-start justify-between">
+
+                  {/* Numero stile Metodo */}
+                  <span className="text-6xl font-bold text-gray-200 select-none">
                     {item.number}
                   </span>
 
+                  {/* Icona */}
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-100 transition-transform duration-300 group-hover:scale-105">
                     <Icon className="h-7 w-7" strokeWidth={2.1} />
                   </div>
+
                 </div>
 
                 <h3 className="text-xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-gray-950">
@@ -804,11 +811,13 @@ const results = [
                 <p className="mt-4 text-base leading-relaxed text-gray-600">
                   {item.description}
                 </p>
+
               </div>
             </motion.div>
           );
         })}
       </div>
+
     </div>
   </AnimatedSection>
 </section>
