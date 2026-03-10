@@ -339,10 +339,13 @@ answer:
   const navLinks = [
 
   { href: "#metodo", label: "Metodo" },
+  { href: "#pacchetto-crescita", label: "Crescita" },
   { href: "#servizi", label: "Servizi" },
   { href: "#faq", label: "FAQ" },
   { href: "#chi-siamo", label: "Chi siamo" },
-  { href: "#contatti", label: "Contatti" },
+  { href: "#contatti", label: "Contatti" }
+
+]
 ];
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
