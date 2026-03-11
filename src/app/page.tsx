@@ -195,7 +195,74 @@ const CloseIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
+const heroParticles = Array.from({ length: 16 }, (_, i) => ({
+  id: i,
+  left: `${6 + i * 6}%`,
+  top: `${14 + (i % 5) * 14}%`,
+  size: 2 + (i % 3),
+  delay: (i % 4) * 0.6,
+  duration: 3 + (i % 4),
+}));
 
+const HeroGlow = ({ className = "" }: { className?: string }) => (
+  <div
+    className={`pointer-events-none absolute rounded-full blur-3xl ${className}`}
+    aria-hidden="true"
+  />
+);
+
+const HeroLineChart = () => {
+  const path =
+    "M 10 130 C 60 124, 86 108, 114 90 C 138 75, 154 82, 178 72 C 202 62, 220 42, 248 36 C 282 29, 312 18, 350 8";
+
+  return (
+    <div className="relative h-44 w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:42px_42px] opacity-30" />
+
+      <svg viewBox="0 0 360 140" className="absolute inset-0 h-full w-full">
+        <defs>
+          <linearGradient id="heroLine" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#60a5fa" />
+            <stop offset="100%" stopColor="#c084fc" />
+          </linearGradient>
+          <linearGradient id="heroArea" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(168,85,247,0.28)" />
+            <stop offset="100%" stopColor="rgba(96,165,250,0.03)" />
+          </linearGradient>
+        </defs>
+
+        <motion.path
+          d={`${path} L 350 140 L 10 140 Z`}
+          fill="url(#heroArea)"
+          initial={{ opacity: 0.2 }}
+          animate={{ opacity: [0.16, 0.3, 0.18] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        <motion.path
+          d={path}
+          fill="none"
+          stroke="url(#heroLine)"
+          strokeWidth="4"
+          strokeLinecap="round"
+          initial={{ pathLength: 0, opacity: 0.7 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 1.7, ease: "easeOut" }}
+        />
+
+        <motion.circle
+          cx="350"
+          cy="8"
+          r="5"
+          fill="#ffffff"
+          initial={{ opacity: 0.7, scale: 0.8 }}
+          animate={{ opacity: [0.6, 1, 0.6], scale: [0.8, 1.18, 0.8] }}
+          transition={{ duration: 2.1, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </svg>
+    </div>
+  );
+};
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -501,290 +568,159 @@ const results = [
       
     
 {/* Hero Section */}
-<section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+<section className="relative min-h-screen flex items-center overflow-hidden bg-slate-900">
   <div className="absolute inset-0 overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-    <div className="absolute top-16 right-[-20%] sm:right-20 w-[260px] h-[260px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
-    <div className="absolute bottom-16 left-[-20%] sm:left-20 w-[220px] h-[220px] sm:w-[400px] sm:h-[400px] bg-purple-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
-    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:60px_60px]" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_78%,rgba(124,58,237,0.18),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(59,130,246,0.16),transparent_26%),linear-gradient(180deg,#0f172a_0%,#111827_45%,#0f172a_100%)]" />
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:58px_58px]" />
+
+    <HeroGlow className="left-[-5rem] bottom-10 w-[260px] h-[260px] sm:w-[420px] sm:h-[420px] bg-purple-500/12" />
+    <HeroGlow className="right-[-4rem] top-16 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] bg-blue-500/12" />
+
+    {heroParticles.map((p) => (
+      <motion.span
+        key={p.id}
+        className="pointer-events-none absolute rounded-full bg-white/70 shadow-[0_0_12px_rgba(96,165,250,0.75)]"
+        style={{
+          left: p.left,
+          top: p.top,
+          width: p.size,
+          height: p.size,
+        }}
+        initial={{ opacity: 0.16, scale: 0.8 }}
+        animate={{ opacity: [0.12, 0.8, 0.12], scale: [0.8, 1.2, 0.8] }}
+        transition={{
+          delay: p.delay,
+          duration: p.duration,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+    ))}
   </div>
 
-  <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-20 text-center">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="space-y-8"
-    >
-      <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
-        <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
-          Digital Growth Partner
-        </span>
-      </div>
+  <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-20 w-full">
+    <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center lg:text-left"
+      >
+        <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
+          <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
+            Digital Growth Partner
+          </span>
+        </div>
 
-      <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.05] text-white">
-        Fai crescere il tuo business
-      </h1>
+        <h1 className="mt-8 text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.02] text-white">
+          Fai crescere il tuo business
+        </h1>
 
-      <p className="max-w-4xl mx-auto text-xl sm:text-2xl text-gray-300 leading-relaxed">
-        Siti web, brand, social e pubblicità progettati per{" "}
-        <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-          generare clienti
-        </span>{" "}
-        con strategie digitali misurabili per aziende e professionisti.
-      </p>
+        <p className="mt-6 max-w-3xl mx-auto lg:mx-0 text-xl sm:text-2xl text-gray-300 leading-relaxed">
+          Siti web, brand, social e pubblicità progettati per{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold">
+            generare clienti
+          </span>{" "}
+          con strategie digitali misurabili per aziende e professionisti.
+        </p>
 
-      <div className="pt-6">
-        <Button
-          size="lg"
-          className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.04] text-lg px-10 py-6 rounded-xl font-semibold tracking-wide"
-          onClick={() =>
-            document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          OTTIENI PIÙ CLIENTI
-        </Button>
-      </div>
-    </motion.div>
-  </div>
-</section>
+        <div className="pt-8">
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.04] text-lg px-10 py-6 rounded-xl font-semibold tracking-wide"
+            onClick={() =>
+              document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            OTTIENI PIÙ CLIENTI
+          </Button>
+        </div>
 
-  {/* Pacchetto Crescita */}
-      <section id="pacchetto-crescita" className="py-24 lg:py-40 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <AnimatedSection className="text-center mb-16 sm:mb-24">
-      <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
-        Pacchetto Crescita
-      </span>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-        Un pacchetto crescita su misura per il tuo business
-      </h2>
-      <p className="max-w-3xl mx-auto text-lg text-gray-600">
-        Analizziamo la tua situazione, individuiamo i punti deboli e interveniamo
-        dove manca struttura o dove c’è margine di miglioramento, costruendo un
-        pacchetto completo progettato per generare clienti.
-      </p>
-    </AnimatedSection>
+        <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm text-slate-300">
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)]" />
+            Risultati misurabili
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(192,132,252,0.8)]" />
+            Strategie su misura
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.8)]" />
+            Crescita orientata ai clienti
+          </div>
+        </div>
+      </motion.div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {[
-        {
-          num: "01",
-          icon: <AnalysisIcon />,
-          title: "Analisi della situazione",
-          desc: "Studiamo il tuo business, la tua presenza online e il tuo posizionamento per capire cosa manca e cosa frena davvero la crescita.",
-        },
-        {
-          num: "02",
-          icon: <StrategyIcon />,
-          title: "Strategia su misura",
-          desc: "Definiamo un pacchetto crescita personalizzato, intervenendo solo dove serve davvero per migliorare risultati e acquisizione clienti.",
-        },
-        {
-          num: "03",
-          icon: <ImplementIcon />,
-          title: "Costruzione del pacchetto",
-          desc: "Realizziamo ciò che serve alla tua crescita: sito web, brand, gestione Instagram e Facebook, pubblicità online e strumenti digitali.",
-        },
-        {
-          num: "04",
-          icon: <OptimizeIcon />,
-          title: "Ottimizzazione continua",
-          desc: "Monitoriamo i risultati e miglioriamo nel tempo il pacchetto per aumentare richieste, clienti e performance del business.",
-        },
-      ].map((step, i) => (
+      <motion.div
+        initial={{ opacity: 0, x: 20, y: 24 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.85, delay: 0.12 }}
+        className="relative"
+      >
         <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 * i }}
-          viewport={{ once: true }}
-          className="relative group min-w-0"
+          whileHover={{ y: -5 }}
+          transition={{ duration: 0.28 }}
+          className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,18,38,0.95),rgba(11,17,33,0.88))] p-6 sm:p-7 shadow-[0_0_70px_rgba(59,130,246,0.10)] backdrop-blur-xl"
         >
-          <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
-            <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
-              {step.num}
+          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.18),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(56,189,248,0.14),transparent_22%)]" />
+
+          <motion.div
+            className="pointer-events-none absolute -inset-px rounded-[28px]"
+            animate={{ opacity: [0.12, 0.28, 0.12] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(96,165,250,0.18), rgba(168,85,247,0.14), rgba(96,165,250,0.08))",
+              filter: "blur(20px)",
+            }}
+          />
+
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 text-sm uppercase tracking-[0.22em] text-slate-300">
+              <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.9)]" />
+              Caso recente
             </div>
-            <div className="relative min-w-0">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6">
-                {step.icon}
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">
-                {step.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed break-words">{step.desc}</p>
+
+            <div className="mt-5">
+              <p className="text-4xl sm:text-5xl font-bold tracking-[-0.04em] text-white leading-tight">
+                +42 <span className="text-violet-300">nuovi clienti</span>
+              </p>
+              <p className="mt-2 text-xl sm:text-2xl text-slate-300">
+                in 90 giorni
+              </p>
+            </div>
+
+            <div className="mt-6">
+              <HeroLineChart />
+            </div>
+
+            <div className="mt-6 space-y-4 text-base sm:text-lg text-slate-200">
+              {["Traffico qualificato", "Lead", "Clienti"].map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.45 + index * 0.12, duration: 0.45 }}
+                  className="group/item flex items-center justify-between rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 transition-all duration-300 hover:border-blue-400/30 hover:bg-white/[0.05]"
+                >
+                  <span>{item}</span>
+
+                  <motion.span
+                    className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_14px_rgba(192,132,252,0.95)]"
+                    animate={{ opacity: [0.4, 1, 0.4] }}
+                    transition={{
+                      duration: 2 + index * 0.35,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.div>
-      ))}
-    </div>
-
-    <AnimatedSection delay={0.2} className="mt-16 sm:mt-20">
-      <div className="rounded-2xl bg-slate-900 p-8 sm:p-10 lg:p-12 shadow-2xl overflow-hidden">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <span className="inline-block text-sm font-semibold text-blue-400 tracking-wider uppercase mb-4">
-              Cosa può includere
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-5">
-              Un pacchetto completo, costruito attorno alle esigenze del cliente
-            </h3>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Non proponiamo una soluzione standard: costruiamo un pacchetto
-              crescita personalizzato in base a ciò che serve davvero per far
-              crescere la tua attività online.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[
-              "Sito web ad alta conversione",
-              "Brand e identità visiva",
-              "Gestione Instagram e Facebook",
-              "Pubblicità online mirata",
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="rounded-xl bg-white/5 border border-white/10 p-5 text-white"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-10 text-center">
-          <a href="#contatti" className="inline-block">
-            <Button
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-5 sm:py-6 rounded-xl text-base sm:text-lg font-medium whitespace-normal break-words text-center px-6 sm:px-10"
-            >
-              RICHIEDI IL TUO PACCHETTO CRESCITA
-            </Button>
-          </a>
-        </div>
-      </div>
-    </AnimatedSection>
-  </div>
-</section>
-      {/* Metodo */}
-      <section id="metodo" className="py-24 lg:py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16 sm:mb-24">
-            <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
-              Il nostro approccio
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Il nostro metodo
-            </h2>
-            <p className="max-w-2xl mx-auto text-lg text-gray-600">
-              Un processo strutturato per trasformare la tua presenza digitale in
-              risultati concreti.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                num: "01",
-                icon: <AnalysisIcon />,
-                title: "Analisi",
-                desc: "Studiamo il tuo mercato e il tuo posizionamento online.",
-              },
-              {
-                num: "02",
-                icon: <StrategyIcon />,
-                title: "Strategia",
-                desc: "Progettiamo un sistema digitale orientato alla conversione.",
-              },
-              {
-                num: "03",
-                icon: <ImplementIcon />,
-                title: "Implementazione",
-                desc: "Realizziamo sito web, funnel e canali di acquisizione.",
-              },
-              {
-                num: "04",
-                icon: <OptimizeIcon />,
-                title: "Ottimizzazione",
-                desc: "Monitoriamo i dati e miglioriamo le performance nel tempo.",
-              },
-            ].map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * i }}
-                viewport={{ once: true }}
-                className="relative group min-w-0"
-              >
-                <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
-                  <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
-                    {step.num}
-                  </div>
-                  <div className="relative min-w-0">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6">
-                      {step.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">{step.title}</h3>
-                    <p className="text-gray-600 leading-relaxed break-words">{step.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-<section id="risultati" className="py-24 lg:py-40 bg-white scroll-mt-32">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <AnimatedSection className="text-center mb-16 sm:mb-24">
-      <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
-        Risultati
-      </span>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-        Risultati che il sistema ProfitSignal può generare
-      </h2>
-      <p className="max-w-2xl mx-auto text-lg text-gray-600">
-        Il nostro obiettivo è trasformare la tua presenza online in un flusso
-        costante di contatti qualificati attraverso un sistema progettato per
-        attrarre, convertire e ottimizzare.
-      </p>
-    </AnimatedSection>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {results.map((item, index) => {
-        const Icon = item.icon;
-
-        return (
-          <motion.div
-            key={item.number}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 * index }}
-            viewport={{ once: true }}
-            className="relative group min-w-0"
-          >
-            <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
-              <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
-                {item.number}
-              </div>
-
-              <div className="relative min-w-0">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6">
-                  <Icon className="h-7 w-7" strokeWidth={2.1} />
-                </div>
-
-                <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">
-                  {item.title}
-                </h3>
-
-                <p className="text-gray-600 leading-relaxed break-words">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        );
-      })}
+      </motion.div>
     </div>
   </div>
 </section>
