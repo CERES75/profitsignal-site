@@ -875,48 +875,139 @@ const results = [
       </section>
 
       {/* Chi siamo */}
-      <section id="chi-siamo" className="py-24 lg:py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <AnimatedSection className="order-2 lg:order-1 min-w-0">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl blur-2xl" />
+<section
+  id="chi-siamo"
+  className="relative py-24 lg:py-40 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] overflow-hidden"
+>
+  {/* soft ambient background */}
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute left-[-10%] top-20 w-[320px] h-[320px] bg-blue-500/10 rounded-full blur-3xl" />
+    <div className="absolute right-[-8%] bottom-10 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-3xl" />
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.015)_1px,transparent_1px)] bg-[size:42px_42px] sm:bg-[size:56px_56px]" />
+  </div>
 
-                <div className="relative bg-slate-900 rounded-xl p-8 sm:p-10 lg:p-14 min-h-[360px] sm:min-h-[520px] flex items-center overflow-hidden">
-                  <blockquote className="text-2xl sm:text-3xl lg:text-5xl text-white font-light leading-[1.2] italic max-w-[680px] break-words">
-                    “Non realizziamo semplici siti web. Costruiamo sistemi digitali progettati per generare opportunità di business.”
-                  </blockquote>
-                </div>
-              </div>
-            </AnimatedSection>
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <AnimatedSection className="order-2 lg:order-1 min-w-0">
+        <motion.div
+          whileHover={{ y: -4 }}
+          transition={{ duration: 0.3 }}
+          className="relative"
+        >
+          {/* outer glow */}
+          <div className="absolute -inset-5 bg-gradient-to-br from-blue-500/15 via-purple-500/10 to-blue-500/10 rounded-[2rem] blur-3xl opacity-70" />
 
-            <AnimatedSection delay={0.2} className="order-1 lg:order-2 space-y-8 min-w-0">
-              <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase">
-                Chi siamo
+          {/* premium card */}
+          <div className="relative rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,#081329_0%,#020817_100%)] p-8 sm:p-10 lg:p-14 min-h-[380px] sm:min-h-[520px] flex items-center overflow-hidden shadow-[0_0_80px_rgba(59,130,246,0.08)] transition-all duration-500 hover:shadow-[0_0_120px_rgba(168,85,247,0.16)]">
+            {/* internal gradients */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(96,165,250,0.12),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.12),transparent_24%)]" />
+
+            {/* subtle grid */}
+            <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:34px_34px]" />
+
+            {/* animated accent dots */}
+            <motion.div
+              className="absolute top-10 right-10 w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_18px_rgba(96,165,250,1)]"
+              animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.3, 0.9] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-12 left-12 w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_18px_rgba(192,132,252,1)]"
+              animate={{ opacity: [0.25, 0.85, 0.25], scale: [0.9, 1.25, 0.9] }}
+              transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            <div className="relative z-10">
+              <span className="text-xs tracking-[0.28em] text-blue-400 uppercase mb-6 block font-medium">
+                Manifesto
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
-                Il partner per la tua crescita digitale
-              </h2>
-              <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  <strong className="text-slate-900">ProfitSignal</strong> nasce con un
-                  obiettivo semplice: aiutare aziende e professionisti a trasformare la
-                  presenza online in clienti reali.
-                </p>
-                <p>
-                  Non ci limitiamo a creare siti web esteticamente belli. Progettiamo
-                  sistemi digitali strategici che lavorano per te, generando contatti e
-                  opportunità di business in modo costante.
-                </p>
-                <p>
-                  Ogni progetto nasce da un&apos;analisi approfondita e si sviluppa con una
-                  strategia chiara, orientata ai risultati e alla crescita misurabile.
-                </p>
-              </div>
-            </AnimatedSection>
+
+              <blockquote className="text-2xl sm:text-3xl lg:text-[3.3rem] text-white font-light leading-[1.12] italic tracking-tight max-w-[700px]">
+                “Non realizziamo semplici siti web. Costruiamo sistemi digitali
+                progettati per generare opportunità di business.”
+              </blockquote>
+            </div>
           </div>
+        </motion.div>
+      </AnimatedSection>
+
+      <AnimatedSection delay={0.15} className="order-1 lg:order-2 space-y-8 min-w-0">
+        <div>
+          <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+            Chi siamo
+          </span>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-[1.05]">
+            Il partner per la tua crescita digitale
+          </h2>
         </div>
-      </section>
+
+        <div className="w-20 h-[3px] rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
+
+        <div className="space-y-7 text-lg text-gray-600 leading-relaxed max-w-xl">
+          <motion.div
+            whileHover={{ x: 4 }}
+            transition={{ duration: 0.2 }}
+            className="relative pl-5"
+          >
+            <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.7)]" />
+            <p>
+              <strong className="text-slate-900">ProfitSignal</strong> nasce con un
+              obiettivo semplice: aiutare aziende e professionisti a trasformare
+              la presenza online in clienti reali.
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ x: 4 }}
+            transition={{ duration: 0.2 }}
+            className="relative pl-5"
+          >
+            <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_12px_rgba(168,85,247,0.7)]" />
+            <p>
+              Non ci limitiamo a creare siti web esteticamente belli.
+              Progettiamo sistemi digitali strategici che lavorano per te,
+              generando contatti e opportunità di business in modo costante.
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ x: 4 }}
+            transition={{ duration: 0.2 }}
+            className="relative pl-5"
+          >
+            <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_12px_rgba(34,211,238,0.7)]" />
+            <p>
+              Ogni progetto nasce da un&apos;analisi approfondita e si sviluppa
+              con una strategia chiara, orientata ai risultati e alla crescita
+              misurabile.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-3 pt-2">
+          {[
+            "Strategia",
+            "Conversione",
+            "Crescita misurabile",
+          ].map((item, i) => (
+            <motion.div
+              key={item}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.08 * i }}
+              viewport={{ once: true }}
+              whileHover={{ y: -3 }}
+              className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-4 text-sm font-medium text-slate-700 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300"
+            >
+              {item}
+            </motion.div>
+          ))}
+        </div>
+      </AnimatedSection>
+    </div>
+  </div>
+</section>
 
       {/* CTA */}
       <section className="py-24 lg:py-40 relative overflow-hidden">
