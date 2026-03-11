@@ -407,16 +407,16 @@ export default function Home() {
     }
   };
 
-  const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#pacchetto-crescita", label: "Crescita" },
-  { href: "#metodo", label: "Metodo" },
-  { href: "#risultati", label: "Risultati" },
-  { href: "#servizi", label: "Servizi" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#chi-siamo", label: "Chi siamo" },
-  { href: "#contatti", label: "Contatti" },
-];
+    const navLinks = [
+    { href: "#home", label: "Home" },
+    { href: "#pacchetto-crescita", label: "Crescita" },
+    { href: "#metodo", label: "Metodo" },
+    { href: "#risultati", label: "Risultati" },
+    { href: "#servizi", label: "Servizi" },
+    { href: "#faq", label: "FAQ" },
+    { href: "#chi-siamo", label: "Chi siamo" },
+    { href: "#contatti", label: "Contatti" },
+  ];
   
 
   const results = [
@@ -445,69 +445,75 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
-      {/* Premium Dark Header */}
+            {/* Premium Dark Header */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-slate-900/80 backdrop-blur-2xl shadow-2xl shadow-black/20 border-b border-white/5"
-            : "bg-gradient-to-b from-slate-900 to-transparent"
+            : "bg-gradient-to-b from-slate-900/95 via-slate-900/70 to-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 lg:h-28 min-w-0">
-            <Link href="/" className="flex items-center min-w-0 max-w-[78%]">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20 lg:h-24 gap-4 xl:gap-6">
+            {/* Logo */}
+            <Link href="/" className="flex items-center shrink-0">
               <Image
                 src="https://ugc.same-assets.com/ToF3sWRYag7DdlJhJBnq9wd5V0fYDZym.png"
                 alt="ProfitSignal"
                 width={230}
                 height={65}
-                className="h-10 sm:h-12 w-auto max-w-full object-contain"
+                className="h-10 sm:h-11 lg:h-12 w-auto object-contain"
                 priority
               />
             </Link>
 
-            <div className="hidden lg:flex items-center gap-12 ml-16">
-              {navLinks.map((link) => {
-                const sectionId = link.href.replace("#", "");
-                const isActive = activeSection === sectionId;
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className={`text-sm font-medium transition-all duration-300 relative group ${
-                      isActive ? "text-blue-400" : "text-white/90 hover:text-blue-300"
-                    }`}
-                  >
-                    {link.label}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center flex-1 justify-center min-w-0">
+              <div className="flex items-center gap-6 xl:gap-8 2xl:gap-10">
+                {navLinks.map((link) => {
+                  const sectionId = link.href.replace("#", "");
+                  const isActive = activeSection === sectionId;
+
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className={`relative whitespace-nowrap text-[15px] xl:text-base font-medium transition-all duration-300 group ${
+                        isActive ? "text-blue-400" : "text-white/85 hover:text-blue-300"
                       }`}
-                    />
-                  </a>
-                );
-              })}
+                    >
+                      {link.label}
+                      <span
+                        className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
 
+            {/* Right Side */}
             <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-              <div className="hidden sm:flex items-center gap-1 text-sm font-medium">
-                <span className="px-2 py-1 text-blue-400 font-semibold">IT</span>
-                <span className="text-white/30">|</span>
+              <div className="hidden md:flex items-center gap-2 text-sm font-medium">
+                <span className="text-blue-400 font-semibold">IT</span>
+                <span className="text-white/25">|</span>
                 <Link
                   href="/en"
-                  className="px-2 py-1 text-white/60 hover:text-white transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   EN
                 </Link>
               </div>
 
               <Button
-                className="hidden sm:inline-flex bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] px-6 py-5 rounded-xl font-medium"
+                className="hidden sm:inline-flex h-11 xl:h-12 px-5 xl:px-6 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-sm xl:text-[15px] font-semibold whitespace-nowrap"
                 onClick={() =>
                   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Prenota una consulenza
+                Prenota ora
               </Button>
 
               <button
@@ -526,15 +532,15 @@ export default function Home() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden bg-slate-900 border-t border-white/10"
+            className="lg:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10"
           >
             <div className="px-4 py-6 space-y-4">
               <div className="flex items-center gap-2 text-sm font-medium pb-4 border-b border-white/10">
-                <span className="px-3 py-2 text-blue-400 font-semibold">IT</span>
+                <span className="text-blue-400 font-semibold">IT</span>
                 <span className="text-white/30">|</span>
                 <Link
                   href="/en"
-                  className="px-3 py-2 text-white/60 hover:text-white transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   EN
                 </Link>
@@ -543,6 +549,7 @@ export default function Home() {
               {navLinks.map((link) => {
                 const sectionId = link.href.replace("#", "");
                 const isActive = activeSection === sectionId;
+
                 return (
                   <a
                     key={link.href}
@@ -558,13 +565,13 @@ export default function Home() {
               })}
 
               <Button
-                className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl py-6 whitespace-normal break-words text-center"
+                className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl py-6 text-center font-semibold"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                Consulenza gratuita
+                Prenota ora
               </Button>
             </div>
           </motion.div>
