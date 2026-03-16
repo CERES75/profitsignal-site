@@ -274,7 +274,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  onst faqItems = [
+  const faqItems = [
   {
     question: "Quanto tempo serve per avere il sito online?",
     answer:
