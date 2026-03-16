@@ -275,32 +275,42 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const faqItems = [
-    {
-      question: "Quanto tempo serve per realizzare il sito?",
-      answer:
-        "Di solito tra 2 e 4 settimane. Il tempo dipende dalla complessità del progetto.",
-    },
-    {
-      question: "Il sito sarà progettato per generare contatti?",
-      answer:
-        "Sì. Ogni sito è progettato con una struttura orientata alla conversione per trasformare i visitatori in contatti reali.",
-    },
-    {
-      question: "In cosa è diverso da un normale sito web?",
-      answer:
-        "Molti siti sono solo una vetrina. Noi progettiamo sistemi digitali pensati per generare clienti e opportunità reali.",
-    },
-    {
-      question: "Offrite supporto dopo la pubblicazione?",
-      answer:
-        "Sì. Possiamo continuare a supportarti con miglioramenti, aggiornamenti e ottimizzazioni.",
-    },
-    {
-      question: "Come posso iniziare?",
-      answer:
-        "Puoi prenotare una consulenza gratuita di 15 minuti per capire se possiamo aiutarti.",
-    },
-  ];
+  {
+    question: "Quanto tempo serve per avere il sito online?",
+    answer:
+      "Di solito tra 2 e 4 settimane. Il tempo dipende dal tipo di sito e dai contenuti disponibili, ma il nostro obiettivo è mettere online il tuo sito nel minor tempo possibile mantenendo qualità e cura nei dettagli.",
+  },
+  {
+    question: "Devo pagare un investimento iniziale?",
+    answer:
+      "No. Il piano parte da 69€/mese e include sviluppo del sito, hosting, manutenzione tecnica e supporto. Questo ti permette di avere un sito professionale senza affrontare un costo iniziale elevato.",
+  },
+  {
+    question: "Cosa include l’abbonamento mensile?",
+    answer:
+      "L’abbonamento include tutto ciò che serve per mantenere il tuo sito online e aggiornato: sviluppo del sito, hosting, manutenzione tecnica, aggiornamenti, supporto e piccole modifiche ai contenuti. In questo modo non devi occuparti della parte tecnica.",
+  },
+  {
+    question: "Posso richiedere modifiche al sito dopo la pubblicazione?",
+    answer:
+      "Sì. Puoi richiedere modifiche ai contenuti come aggiornamento testi, sostituzione immagini, aggiornamento orari o contatti. Il sito rimane sempre aggiornato nel tempo.",
+  },
+  {
+    question: "Il dominio e l’hosting sono inclusi?",
+    answer:
+      "Sì. Il dominio, l’hosting e il certificato di sicurezza SSL sono inclusi nel servizio. Non devi occuparti di nulla dal punto di vista tecnico.",
+  },
+  {
+    question: "Il sito sarà ottimizzato per Google?",
+    answer:
+      "Sì. Il sito viene realizzato con una struttura SEO di base, ottimizzato per velocità, mobile e indicizzazione su Google. Questo aiuta il tuo sito a essere visibile online fin da subito.",
+  },
+  {
+    question: "Ci sono altri costi oltre all’abbonamento?",
+    answer:
+      "No. Non ci sono costi nascosti. Paghi semplicemente il canone mensile del piano scelto.",
+  },
+];
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -1380,49 +1390,95 @@ export default function Home() {
       </section>
 
       {/* FAQ SECTION */}
-      <section id="faq" className="py-24">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Domande frequenti
-            </h2>
-            <p className="text-muted-foreground">
-              Risposte alle domande più comuni.
-            </p>
-          </div>
+<section id="faq" className="py-24 sm:py-28 bg-gray-50">
+  <div className="max-w-5xl mx-auto px-6">
+    <div className="text-center mb-14 sm:mb-16">
+      <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+        Domande frequenti
+      </span>
 
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <div
-                key={index}
-                className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden"
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between text-left px-6 py-5 rounded-xl transition-all duration-200 hover:bg-blue-50 hover:shadow-sm"
-                >
-                  <span className="text-lg font-medium">
-                    {item.question}
-                  </span>
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+        Tutto quello che devi sapere
+        <span className="block">sul piano da 69€/mese</span>
+      </h2>
 
-                  <ChevronDown
-                    className={`w-5 h-5 transition-transform ${
-                      openFaq === index ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
+      <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        Risposte chiare alle domande più comuni sul nostro abbonamento per il tuo sito professionale.
+      </p>
+    </div>
 
-                {openFaq === index && (
-                  <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                    {item.answer}
-                  </div>
-                )}
+    <div className="space-y-4">
+      {faqItems.map((item, index) => (
+        <div
+          key={index}
+          className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
+            openFaq === index
+              ? "border-blue-400 bg-white shadow-lg shadow-blue-500/10"
+              : "border-gray-200 bg-white shadow-sm"
+          }`}
+        >
+          <button
+            type="button"
+            onClick={() => setOpenFaq(openFaq === index ? null : index)}
+            className={`w-full flex items-center justify-between gap-6 text-left px-6 sm:px-8 py-5 sm:py-6 transition-all duration-200 ${
+              openFaq === index ? "bg-blue-50/60" : "hover:bg-blue-50/50"
+            }`}
+          >
+            <span className="text-lg sm:text-xl font-semibold text-slate-900 leading-snug">
+              {item.question}
+            </span>
+
+            <div
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                openFaq === index
+                  ? "border-blue-300 bg-blue-100 text-blue-600"
+                  : "border-gray-200 bg-white text-slate-700"
+              }`}
+            >
+              <ChevronDown
+                className={`w-5 h-5 transition-transform duration-300 ${
+                  openFaq === index ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+          </button>
+
+          <div
+            className={`grid transition-all duration-300 ease-in-out ${
+              openFaq === index
+                ? "grid-rows-[1fr] opacity-100"
+                : "grid-rows-[0fr] opacity-0"
+            }`}
+          >
+            <div className="overflow-hidden">
+              <div className="px-6 sm:px-8 pb-6 sm:pb-7 text-gray-600 text-base sm:text-lg leading-relaxed">
+                {item.answer}
               </div>
-            ))}
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+
+    <div className="mt-16 text-center">
+      <h3 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">
+        Hai ancora una domanda?
+      </h3>
+
+      <p className="text-gray-600 text-base sm:text-lg mb-8 max-w-xl mx-auto">
+        Siamo disponibili per aiutarti a capire se questo piano è adatto alla tua attività.
+      </p>
+
+      <a href="#contatti" className="inline-block">
+        <Button
+          className="bg-white border border-gray-200 text-slate-900 hover:bg-gray-50 hover:border-blue-300 shadow-sm hover:shadow-md transition-all duration-300 rounded-full px-8 py-6 text-lg font-semibold"
+        >
+          PRENOTA UNA CONSULENZA
+        </Button>
+      </a>
+    </div>
+  </div>
+</section>
 
       {/* Contatti */}
       <section id="contatti" className="py-24 lg:py-40 bg-gray-50">
