@@ -792,123 +792,151 @@ export default function Home() {
 </section>
 
       {/* Pacchetto Crescita */}
-      <section id="pacchetto-crescita" className="py-24 lg:py-40 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16 sm:mb-24">
-            <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
-              Pacchetto Crescita
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Un pacchetto crescita su misura per il tuo business
-            </h2>
-            <p className="max-w-3xl mx-auto text-lg text-gray-600">
-              Analizziamo la tua situazione, individuiamo i punti deboli e interveniamo
-              dove manca struttura o dove c’è margine di miglioramento, costruendo un
-              pacchetto completo progettato per generare clienti.
-            </p>
-          </AnimatedSection>
+<section id="pacchetto-crescita" className="py-24 lg:py-40 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <AnimatedSection className="text-center mb-16 sm:mb-24">
+      <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+        Pacchetto Crescita
+      </span>
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+        Il tuo sito professionale da 69€/mese
+      </h2>
+      <p className="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
+        Il modo più semplice per dare alla tua attività una presenza online professionale,
+        senza affrontare un investimento iniziale elevato. Un sito su misura, curato nei
+        dettagli e pensato per aiutarti a presentarti bene online.
+      </p>
+    </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                num: "01",
-                icon: <AnalysisIcon />,
-                title: "Analisi della situazione",
-                desc: "Studiamo il tuo business, la tua presenza online e il tuo posizionamento per capire cosa manca e cosa frena davvero la crescita.",
-              },
-              {
-                num: "02",
-                icon: <StrategyIcon />,
-                title: "Strategia su misura",
-                desc: "Definiamo un pacchetto crescita personalizzato, intervenendo solo dove serve davvero per migliorare risultati e acquisizione clienti.",
-              },
-              {
-                num: "03",
-                icon: <ImplementIcon />,
-                title: "Costruzione del pacchetto",
-                desc: "Realizziamo ciò che serve alla tua crescita: sito web, brand, gestione Instagram e Facebook, pubblicità online e strumenti digitali.",
-              },
-              {
-                num: "04",
-                icon: <OptimizeIcon />,
-                title: "Ottimizzazione continua",
-                desc: "Monitoriamo i risultati e miglioriamo nel tempo il pacchetto per aumentare richieste, clienti e performance del business.",
-              },
-            ].map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * i }}
-                viewport={{ once: true }}
-                className="relative group min-w-0"
-              >
-                <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
-                  <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
-                    {step.num}
-                  </div>
-                  <div className="relative min-w-0">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6">
-                      {step.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed break-words">{step.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          num: "01",
+          icon: <AnalysisIcon />,
+          title: "Sito web su misura",
+          desc: "Creiamo un sito professionale progettato per rappresentare al meglio la tua attività e facilitare il contatto con i clienti.",
+        },
+        {
+          num: "02",
+          icon: <StrategyIcon />,
+          title: "Presenza online professionale",
+          desc: "Il sito è ottimizzato per smartphone, collegato ai tuoi canali social e pensato per comunicare in modo chiaro e moderno.",
+        },
+        {
+          num: "03",
+          icon: <ImplementIcon />,
+          title: "Visibilità su Google",
+          desc: "Impostiamo una struttura SEO base e supportiamo l’ottimizzazione del tuo profilo Google Business per aiutarti a essere trovato più facilmente.",
+        },
+        {
+          num: "04",
+          icon: <OptimizeIcon />,
+          title: "Supporto continuo",
+          desc: "Hosting, manutenzione tecnica, assistenza e aggiornamenti contenuti per mantenere il tuo sito sempre ordinato, attivo e professionale.",
+        },
+      ].map((step, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 * i }}
+          viewport={{ once: true }}
+          className="relative group min-w-0"
+        >
+          <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
+            <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
+              {step.num}
+            </div>
+            <div className="relative min-w-0">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-500/20">
+                {step.icon}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">
+                {step.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed break-words">{step.desc}</p>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    <AnimatedSection delay={0.2} className="mt-16 sm:mt-20">
+      <div className="relative rounded-2xl bg-slate-900 p-8 sm:p-10 lg:p-12 shadow-2xl overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.12),transparent_25%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.12),transparent_25%)]" />
+
+        <div className="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <span className="inline-block text-sm font-semibold text-blue-400 tracking-wider uppercase mb-4">
+              Cosa include il piano
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-5 leading-tight">
+              Tutto ciò che serve per avere una presenza online professionale
+            </h3>
+            <p className="text-gray-300 text-lg leading-relaxed">
+              Una soluzione semplice, accessibile e senza investimento iniziale,
+              pensata per attività locali e professionisti che vogliono partire con
+              un sito serio, moderno e sempre supportato.
+            </p>
+
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-300">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,0.8)]" />
+              Senza investimento iniziale
+            </div>
           </div>
 
-          <AnimatedSection delay={0.2} className="mt-16 sm:mt-20">
-            <div className="rounded-2xl bg-slate-900 p-8 sm:p-10 lg:p-12 shadow-2xl overflow-hidden">
-              <div className="grid lg:grid-cols-2 gap-10 items-center">
-                <div>
-                  <span className="inline-block text-sm font-semibold text-blue-400 tracking-wider uppercase mb-4">
-                    Cosa può includere
-                  </span>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-5">
-                    Un pacchetto completo, costruito attorno alle esigenze del cliente
-                  </h3>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    Non proponiamo una soluzione standard: costruiamo un pacchetto
-                    crescita personalizzato in base a ciò che serve davvero per far
-                    crescere la tua attività online.
-                  </p>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[
-                    "Sito web ad alta conversione",
-                    "Brand e identità visiva",
-                    "Gestione Instagram e Facebook",
-                    "Pubblicità online mirata",
-                  ].map((item, i) => (
-                    <div
-                      key={i}
-                      className="rounded-xl bg-white/5 border border-white/10 p-5 text-white"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              "Sito web 100% su misura",
+              "Hosting incluso",
+              "Ottimizzazione mobile",
+              "Modulo contatto / appuntamento",
+              "Collegamento WhatsApp",
+              "Collegamento social",
+              "SEO base",
+              "Ottimizzazione Google Business Profile",
+              "Manutenzione tecnica",
+              "Supporto tecnico",
+              "FAQ",
+              "Modifiche contenuti incluse",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="rounded-xl bg-white/5 border border-white/10 p-5 text-white backdrop-blur-sm hover:bg-white/[0.07] hover:border-blue-400/20 transition-all duration-300"
+              >
+                {item}
               </div>
-
-              <div className="mt-10 text-center">
-                <a href="#contatti" className="inline-block">
-                  <Button
-                    className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-5 sm:py-6 rounded-xl text-base sm:text-lg font-medium whitespace-normal break-words text-center px-6 sm:px-10"
-                  >
-                    RICHIEDI IL TUO PACCHETTO CRESCITA
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </AnimatedSection>
+            ))}
+          </div>
         </div>
-      </section>
 
+        <div className="relative z-10 mt-10 text-center">
+          <div className="mb-5">
+            <p className="text-sm uppercase tracking-[0.22em] text-slate-400 mb-2">
+              Starter Plan
+            </p>
+            <div className="flex items-end justify-center gap-2">
+              <span className="text-4xl sm:text-5xl font-bold text-white">69€</span>
+              <span className="text-lg sm:text-xl text-slate-300 mb-1">/mese</span>
+            </div>
+          </div>
+
+          <a href="#contatti" className="inline-block">
+            <Button
+              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-5 sm:py-6 rounded-xl text-base sm:text-lg font-medium whitespace-normal break-words text-center px-6 sm:px-10"
+            >
+              RICHIEDI IL TUO SITO
+            </Button>
+          </a>
+
+          <p className="mt-4 text-sm text-slate-400">
+            Perfetto per attività locali e professionisti
+          </p>
+        </div>
+      </div>
+    </AnimatedSection>
+  </div>
+</section>
       {/* Metodo */}
       <section id="metodo" className="py-24 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
