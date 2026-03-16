@@ -579,160 +579,217 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_78%,rgba(124,58,237,0.18),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(59,130,246,0.16),transparent_26%),linear-gradient(180deg,#0f172a_0%,#111827_45%,#0f172a_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:58px_58px]" />
+<section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-slate-900">
+  <div className="absolute inset-0 overflow-hidden">
 
-          <HeroGlow className="left-[-5rem] bottom-10 w-[260px] h-[260px] sm:w-[420px] sm:h-[420px] bg-purple-500/12" />
-          <HeroGlow className="right-[-4rem] top-16 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] bg-blue-500/12" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_78%,rgba(124,58,237,0.18),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(59,130,246,0.16),transparent_26%),linear-gradient(180deg,#0f172a_0%,#111827_45%,#0f172a_100%)]" />
 
-          {heroParticles.map((p) => (
-            <motion.span
-              key={p.id}
-              className="pointer-events-none absolute rounded-full bg-white/70 shadow-[0_0_12px_rgba(96,165,250,0.75)]"
-              style={{
-                left: p.left,
-                top: p.top,
-                width: p.size,
-                height: p.size,
-              }}
-              initial={{ opacity: 0.16, scale: 0.8 }}
-              animate={{ opacity: [0.12, 0.8, 0.12], scale: [0.8, 1.2, 0.8] }}
-              transition={{
-                delay: p.delay,
-                duration: p.duration,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:58px_58px]" />
+
+    <HeroGlow className="left-[-5rem] bottom-10 w-[260px] h-[260px] sm:w-[420px] sm:h-[420px] bg-purple-500/12" />
+    <HeroGlow className="right-[-4rem] top-16 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] bg-blue-500/12" />
+
+    {heroParticles.map((p) => (
+      <motion.span
+        key={p.id}
+        className="pointer-events-none absolute rounded-full bg-white/70 shadow-[0_0_12px_rgba(96,165,250,0.75)]"
+        style={{
+          left: p.left,
+          top: p.top,
+          width: p.size,
+          height: p.size,
+        }}
+        initial={{ opacity: 0.16, scale: 0.8 }}
+        animate={{ opacity: [0.12, 0.8, 0.12], scale: [0.8, 1.2, 0.8] }}
+        transition={{
+          delay: p.delay,
+          duration: p.duration,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+    ))}
+  </div>
+
+  <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-20 w-full">
+
+    <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
+
+      {/* LEFT TEXT */}
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center lg:text-left"
+      >
+
+        <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
+          <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
+            Nuovo piano per attività locali
+          </span>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-20 w-full">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center lg:text-left"
-            >
-              <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
-                <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
-                  Digital Growth Partner
+        <h1 className="mt-8 text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.02] text-white">
+          Il tuo sito professionale
+          <span className="block bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
+            da 69€/mese
+          </span>
+        </h1>
+
+        <p className="mt-6 max-w-3xl mx-auto lg:mx-0 text-xl sm:text-2xl text-gray-300 leading-relaxed">
+          Senza investimento iniziale.  
+          Un sito su misura con hosting incluso, ottimizzato per smartphone e supporto continuo.
+        </p>
+
+        <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.04] text-lg px-10 py-6 rounded-xl font-semibold tracking-wide"
+            onClick={() =>
+              document.getElementById("offerta")?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            SCOPRI L’OFFERTA
+          </Button>
+
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-white/15 bg-white/5 text-white hover:bg-white/10 hover:border-blue-400/40 backdrop-blur-md transition-all duration-300 text-lg px-10 py-6 rounded-xl font-semibold tracking-wide shadow-lg shadow-slate-950/30"
+            onClick={() =>
+              document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            PRENOTA UNA CONSULENZA
+          </Button>
+
+        </div>
+
+        <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm text-slate-300">
+
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)]" />
+            100% su misura
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(192,132,252,0.8)]" />
+            Nessun costo iniziale
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.8)]" />
+            Supporto continuo
+          </div>
+
+        </div>
+      </motion.div>
+
+      {/* RIGHT CARD */}
+      <motion.div
+        initial={{ opacity: 0, x: 20, y: 24 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.85, delay: 0.12 }}
+        className="relative"
+      >
+
+        <motion.div
+          whileHover={{ y: -6, scale: 1.01 }}
+          transition={{ duration: 0.28 }}
+          className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,18,38,0.96),rgba(11,17,33,0.9))] p-6 sm:p-7 shadow-[0_0_70px_rgba(59,130,246,0.10)] backdrop-blur-xl"
+        >
+
+          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.20),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(56,189,248,0.16),transparent_22%)]" />
+
+          <div className="relative z-10">
+
+            <div className="flex items-center justify-between">
+
+              <span className="text-sm uppercase tracking-[0.22em] text-slate-300">
+                Starter Plan
+              </span>
+
+              <span className="text-xs px-3 py-1 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
+                Senza investimento iniziale
+              </span>
+
+            </div>
+
+            <div className="mt-6">
+
+              <p className="text-slate-400 text-sm">A partire da</p>
+
+              <div className="flex items-end gap-2 mt-1">
+
+                <p className="text-5xl sm:text-6xl font-bold text-white">
+                  69€
+                </p>
+
+                <span className="pb-1 text-xl text-slate-300">
+                  /mese
                 </span>
+
               </div>
 
-              <h1 className="mt-8 text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.02] text-white">
-                Fai crescere il tuo business
-              </h1>
-
-              <p className="mt-6 max-w-3xl mx-auto lg:mx-0 text-xl sm:text-2xl text-gray-300 leading-relaxed">
-                Siti web, brand, social e pubblicità progettati per{" "}
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-                  generare clienti
-                </span>{" "}
-                con strategie digitali misurabili per aziende e professionisti.
+              <p className="mt-3 text-lg text-slate-200">
+                Il modo più semplice per avere un sito professionale per la tua attività.
               </p>
 
-              <div className="pt-8">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.04] text-lg px-10 py-6 rounded-xl font-semibold tracking-wide"
-                  onClick={() =>
-                    document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
-                  }
+            </div>
+
+            <div className="mt-6 space-y-3 text-slate-200">
+
+              {[
+                "Sito web 100% su misura",
+                "Hosting incluso",
+                "Ottimizzato per smartphone",
+                "WhatsApp e contatti diretti",
+                "SEO base per Google",
+                "Supporto tecnico continuo",
+              ].map((item, index) => (
+                <div
+                  key={item}
+                  className="flex items-center justify-between rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3"
                 >
-                  OTTIENI PIÙ CLIENTI
-                </Button>
-              </div>
+                  <span>{item}</span>
 
-              <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm text-slate-300">
-                <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)]" />
-                  Risultati misurabili
+                  <span className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_14px_rgba(192,132,252,0.95)]" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(192,132,252,0.8)]" />
-                  Strategie su misura
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.8)]" />
-                  Crescita orientata ai clienti
-                </div>
-              </div>
-            </motion.div>
+              ))}
 
-            <motion.div
-              initial={{ opacity: 0, x: 20, y: 24 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.12 }}
-              className="relative"
-            >
-              <motion.div
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.28 }}
-                className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,18,38,0.95),rgba(11,17,33,0.88))] p-6 sm:p-7 shadow-[0_0_70px_rgba(59,130,246,0.10)] backdrop-blur-xl"
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-blue-400/15 bg-blue-500/[0.05] px-4 py-4 text-slate-300 text-sm">
+              Scopri sotto tutti i dettagli dell’offerta
+            </div>
+
+            <div className="mt-6">
+
+              <Button
+                size="lg"
+                className="w-full bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 text-white shadow-xl hover:scale-[1.02] transition-all duration-300 px-8 py-6 rounded-2xl font-semibold"
+                onClick={() =>
+                  document.getElementById("offerta")?.scrollIntoView({ behavior: "smooth" })
+                }
               >
-                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.18),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(56,189,248,0.14),transparent_22%)]" />
+                VEDI COSA INCLUDE IL PIANO
+              </Button>
 
-                <motion.div
-                  className="pointer-events-none absolute -inset-px rounded-[28px]"
-                  animate={{ opacity: [0.12, 0.28, 0.12] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(96,165,250,0.18), rgba(168,85,247,0.14), rgba(96,165,250,0.08))",
-                    filter: "blur(20px)",
-                  }}
-                />
+            </div>
 
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2 text-sm uppercase tracking-[0.22em] text-slate-300">
-                    <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.9)]" />
-                    Caso recente
-                  </div>
+            <p className="mt-4 text-center text-sm text-slate-400">
+              Perfetto per attività locali e professionisti
+            </p>
 
-                  <div className="mt-5">
-                    <p className="text-4xl sm:text-5xl font-bold tracking-[-0.04em] text-white leading-tight">
-                      +42 <span className="text-violet-300">nuovi clienti</span>
-                    </p>
-                    <p className="mt-2 text-xl sm:text-2xl text-slate-300">in 90 giorni</p>
-                  </div>
-
-                  <div className="mt-6">
-                    <HeroLineChart />
-                  </div>
-
-                  <div className="mt-6 space-y-4 text-base sm:text-lg text-slate-200">
-                    {["Traffico qualificato", "Lead", "Clienti"].map((item, index) => (
-                      <motion.div
-                        key={item}
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.45 + index * 0.12, duration: 0.45 }}
-                        className="group/item flex items-center justify-between rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 transition-all duration-300 hover:border-blue-400/30 hover:bg-white/[0.05]"
-                      >
-                        <span>{item}</span>
-
-                        <motion.span
-                          className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_14px_rgba(192,132,252,0.95)]"
-                          animate={{ opacity: [0.4, 1, 0.4] }}
-                          transition={{
-                            duration: 2 + index * 0.35,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                        />
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
       {/* Pacchetto Crescita */}
       <section id="pacchetto-crescita" className="py-24 lg:py-40 bg-gray-50">
