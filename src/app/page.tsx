@@ -274,7 +274,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const faqItems = [
+  onst faqItems = [
   {
     question: "Quanto tempo serve per avere il sito online?",
     answer:
@@ -1482,7 +1482,6 @@ export default function Home() {
 {/* TESTIMONIANZE */}
 <section id="testimonianze" className="py-24 bg-gray-50">
   <div className="max-w-6xl mx-auto px-6">
-
     <div className="text-center mb-16">
       <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
         Testimonianze
@@ -1498,48 +1497,50 @@ export default function Home() {
       </p>
     </div>
 
-
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
       {[
         {
           text: "Prima non avevo un vero sito e molti clienti facevano fatica a trovare informazioni sulla mia attività. Ora ho un sito professionale e ricevo molte più richieste.",
           author: "Marco R.",
           job: "Personal Trainer",
+          avatar: "https://randomuser.me/api/portraits/men/32.jpg",
         },
         {
           text: "Il sito ha cambiato completamente l'immagine della mia attività. Ora quando i clienti mi cercano online trovano subito informazioni chiare e professionali.",
           author: "Laura B.",
           job: "Centro estetico",
+          avatar: "https://randomuser.me/api/portraits/women/44.jpg",
         },
         {
           text: "Finalmente ho un sito semplice, chiaro e che rappresenta davvero il mio lavoro. I clienti mi trovano su Google e mi contattano direttamente dal sito.",
           author: "Andrea M.",
           job: "Idraulico",
+          avatar: "https://randomuser.me/api/portraits/men/75.jpg",
         },
         {
           text: "Il sito mi ha aiutato a presentare meglio i miei servizi e a dare più fiducia ai clienti che mi trovano online.",
           author: "Francesca L.",
           job: "Consulente",
+          avatar: "https://randomuser.me/api/portraits/women/65.jpg",
         },
         {
           text: "Ora quando qualcuno cerca la mia attività online trova subito il sito con tutte le informazioni. È stato molto utile per la mia attività.",
           author: "Luca D.",
           job: "Studio fotografico",
+          avatar: "https://randomuser.me/api/portraits/men/11.jpg",
         },
         {
           text: "Non pensavo che un sito potesse fare così tanta differenza. Adesso i clienti mi trovano più facilmente e capiscono subito cosa offro.",
           author: "Giulia P.",
           job: "Parrucchiera",
+          avatar: "https://randomuser.me/api/portraits/women/33.jpg",
         },
       ].map((review, i) => (
-
         <div
           key={i}
           className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1"
         >
-
-          <div className="flex mb-4 text-yellow-400">
+          <div className="flex mb-4 text-yellow-400 text-lg">
             ★★★★★
           </div>
 
@@ -1548,9 +1549,12 @@ export default function Home() {
           </p>
 
           <div className="flex items-center gap-3">
-
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-semibold">
-              {review.author.charAt(0)}
+            <div className="w-11 h-11 rounded-full overflow-hidden border border-gray-200 shadow-sm">
+              <img
+                src={review.avatar}
+                alt={review.author}
+                className="w-full h-full object-cover"
+              />
             </div>
 
             <div>
@@ -1561,15 +1565,10 @@ export default function Home() {
                 {review.job}
               </p>
             </div>
-
           </div>
-
         </div>
-
       ))}
-
     </div>
-
   </div>
 </section>
       {/* Contatti */}
