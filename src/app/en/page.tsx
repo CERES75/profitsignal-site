@@ -5,7 +5,8 @@ import { useState, useEffect, useRef, FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MessageSquare, Target, LineChart, ArrowRight } from "lucide-react";
+
 // Animated Section Component
 const AnimatedSection = ({
   children,
@@ -101,7 +102,7 @@ const LeadGenIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
-      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
     />
   </svg>
 );
@@ -175,7 +176,12 @@ const LinkedInIcon = ({ className = "w-6 h-6" }) => (
 
 const ArrowUpIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M5 10l7-7m0 0l7 7m-7-7v18"
+    />
   </svg>
 );
 
@@ -191,41 +197,121 @@ const CloseIcon = () => (
   </svg>
 );
 
-export default function HomeEN() {
+// Hero helpers
+const heroParticles = Array.from({ length: 16 }, (_, i) => ({
+  id: i,
+  left: `${6 + i * 6}%`,
+  top: `${14 + (i % 5) * 14}%`,
+  size: 2 + (i % 3),
+  delay: (i % 4) * 0.6,
+  duration: 3 + (i % 4),
+}));
+
+const HeroGlow = ({ className = "" }: { className?: string }) => (
+  <div
+    className={`pointer-events-none absolute rounded-full blur-3xl ${className}`}
+    aria-hidden="true"
+  />
+);
+
+const HeroLineChart = () => {
+  const path =
+    "M 10 130 C 60 124, 86 108, 114 90 C 138 75, 154 82, 178 72 C 202 62, 220 42, 248 36 C 282 29, 312 18, 350 8";
+
+  return (
+    <div className="relative h-44 w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:42px_42px] opacity-30" />
+
+      <svg viewBox="0 0 360 140" className="absolute inset-0 h-full w-full">
+        <defs>
+          <linearGradient id="heroLine" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#60a5fa" />
+            <stop offset="100%" stopColor="#c084fc" />
+          </linearGradient>
+          <linearGradient id="heroArea" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(168,85,247,0.28)" />
+            <stop offset="100%" stopColor="rgba(96,165,250,0.03)" />
+          </linearGradient>
+        </defs>
+
+        <motion.path
+          d={`${path} L 350 140 L 10 140 Z`}
+          fill="url(#heroArea)"
+          initial={{ opacity: 0.2 }}
+          animate={{ opacity: [0.16, 0.3, 0.18] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        <motion.path
+          d={path}
+          fill="none"
+          stroke="url(#heroLine)"
+          strokeWidth="4"
+          strokeLinecap="round"
+          initial={{ pathLength: 0, opacity: 0.7 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 1.7, ease: "easeOut" }}
+        />
+
+        <motion.circle
+          cx="350"
+          cy="8"
+          r="5"
+          fill="#ffffff"
+          initial={{ opacity: 0.7, scale: 0.8 }}
+          animate={{ opacity: [0.6, 1, 0.6], scale: [0.8, 1.18, 0.8] }}
+          transition={{ duration: 2.1, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </svg>
+    </div>
+  );
+};
+
+export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-// FAQ STATE
-const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-const faqItems = [
-{
-question: "How long does it take to build a website?",
-answer:
-"Most websites can be designed and launched within a few weeks, depending on the complexity of the project.",
-},
-{
-question: "Will the website be built to generate leads?",
-answer:
-"Yes. Every website is designed with conversion in mind, helping turn visitors into real enquiries.",
-},
-{
-question: "How is this different from a standard website?",
-answer:
-"Most websites are just online brochures. We build digital systems designed to generate clients.",
-},
-{
-question: "Do you offer support after launch?",
-answer:
-"Yes. We can continue supporting you with updates, improvements, and optimisation.",
-},
-{
-question: "How do I get started?",
-answer:
-"The easiest way is to book a free consultation so we can understand your goals.",
-},
-];
+  const faqItems = [
+    {
+      question: "How long does it take to get the website online?",
+      answer:
+        "Usually between 2 and 4 weeks. The timing depends on the type of website and the content available, but our goal is to launch your site as quickly as possible while maintaining quality and attention to detail.",
+    },
+    {
+      question: "Do I need to pay an upfront investment?",
+      answer:
+        "No. The plan starts at €69/month and includes website development, hosting, technical maintenance, and support. This allows you to have a professional website without facing a large upfront cost.",
+    },
+    {
+      question: "What is included in the monthly subscription?",
+      answer:
+        "The subscription includes everything needed to keep your website online and up to date: website development, hosting, technical maintenance, updates, support, and small content changes. This way you do not need to worry about the technical side.",
+    },
+    {
+      question: "Can I request changes after the website is published?",
+      answer:
+        "Yes. You can request content changes such as text updates, image replacements, updated opening hours, or contact details. Your website stays updated over time.",
+    },
+    {
+      question: "Are the domain and hosting included?",
+      answer:
+        "Yes. Domain, hosting, and the SSL security certificate are included in the service. You do not need to handle anything from the technical side.",
+    },
+    {
+      question: "Will the website be optimized for Google?",
+      answer:
+        "Yes. The website is built with a basic SEO structure and optimized for speed, mobile devices, and Google indexing. This helps your site become visible online from day one.",
+    },
+    {
+      question: "Are there any other costs besides the subscription?",
+      answer:
+        "No. There are no hidden costs. You simply pay the monthly fee of the selected plan.",
+    },
+  ];
+
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -241,7 +327,7 @@ answer:
       setIsScrolled(window.scrollY > 50);
       setShowScrollTop(window.scrollY > 500);
 
-      const sections = ["method", "services", "about", "contact"];
+      const sections = ["metodo", "pacchetto-crescita", "risultati", "servizi", "faq", "chi-siamo", "contatti"];
       let currentSection = "";
 
       for (const section of sections) {
@@ -280,7 +366,7 @@ answer:
     const serviceMap: Record<string, string> = {
       "sito-web": "High-converting website",
       "lead-gen": "Lead generation system",
-      acquisizione: "Client acquisition strategy",
+      acquisizione: "Customer acquisition strategy",
       altro: "Other",
     };
 
@@ -332,10 +418,38 @@ answer:
   };
 
   const navLinks = [
-    { href: "#method", label: "Method" },
-    { href: "#services", label: "Services" },
-    { href: "#about", label: "Company" },
-    { href: "#contact", label: "Contact" },
+    { href: "#home", label: "Home" },
+    { href: "#pacchetto-crescita", label: "Growth" },
+    { href: "#metodo", label: "Method" },
+    { href: "#risultati", label: "Results" },
+    { href: "#servizi", label: "Services" },
+    { href: "#faq", label: "FAQ" },
+    { href: "#chi-siamo", label: "About us" },
+    { href: "#contatti", label: "Contact" },
+  ];
+
+  const results = [
+    {
+      number: "01",
+      title: "More contact requests",
+      description:
+        "Websites designed to turn visitors into quote requests and business opportunities.",
+      icon: MessageSquare,
+    },
+    {
+      number: "02",
+      title: "Qualified traffic",
+      description:
+        "Targeted advertising campaigns to reach people who are genuinely interested in your services.",
+      icon: Target,
+    },
+    {
+      number: "03",
+      title: "Measurable growth",
+      description:
+        "Ongoing performance monitoring to improve results, conversions, and return on investment.",
+      icon: LineChart,
+    },
   ];
 
   return (
@@ -345,64 +459,70 @@ answer:
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-slate-900/80 backdrop-blur-2xl shadow-2xl shadow-black/20 border-b border-white/5"
-            : "bg-gradient-to-b from-slate-900 to-transparent"
+            : "bg-gradient-to-b from-slate-900/95 via-slate-900/70 to-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 lg:h-28 min-w-0">
-            <Link href="/en" className="flex items-center min-w-0 max-w-[78%]">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20 lg:h-24 gap-4 xl:gap-6">
+            {/* Logo */}
+            <Link href="/en" className="flex items-center shrink-0">
               <Image
-                src="https://ugc.same-assets.com/ifjX7h6TvXavA5CsHzk5-IuqMdmC7CjQ.png"
+                src="https://ugc.same-assets.com/ToF3sWRYag7DdlJhJBnq9wd5V0fYDZym.png"
                 alt="ProfitSignal"
                 width={230}
                 height={65}
-                className="h-10 sm:h-12 w-auto max-w-full object-contain"
+                className="h-10 sm:h-11 lg:h-12 w-auto object-contain"
                 priority
               />
             </Link>
 
-            <div className="hidden lg:flex items-center gap-12 ml-16">
-              {navLinks.map((link) => {
-                const sectionId = link.href.replace("#", "");
-                const isActive = activeSection === sectionId;
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className={`text-sm font-medium transition-all duration-300 relative group ${
-                      isActive ? "text-blue-400" : "text-white/90 hover:text-blue-300"
-                    }`}
-                  >
-                    {link.label}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center flex-1 justify-center min-w-0">
+              <div className="flex items-center gap-6 xl:gap-8 2xl:gap-10">
+                {navLinks.map((link) => {
+                  const sectionId = link.href.replace("#", "");
+                  const isActive = activeSection === sectionId;
+
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className={`relative whitespace-nowrap text-[15px] xl:text-base font-medium transition-all duration-300 group ${
+                        isActive ? "text-blue-400" : "text-white/85 hover:text-blue-300"
                       }`}
-                    />
-                  </a>
-                );
-              })}
+                    >
+                      {link.label}
+                      <span
+                        className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
 
+            {/* Right Side */}
             <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-              <div className="hidden sm:flex items-center gap-1 text-sm font-medium">
+              <div className="hidden md:flex items-center gap-2 text-sm font-medium">
                 <Link
                   href="/"
-                  className="px-2 py-1 text-white/60 hover:text-white transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   IT
                 </Link>
-                <span className="text-white/30">|</span>
-                <span className="px-2 py-1 text-blue-400 font-semibold">EN</span>
+                <span className="text-white/25">|</span>
+                <span className="text-blue-400 font-semibold">EN</span>
               </div>
 
               <Button
-                className="hidden sm:inline-flex bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] px-6 py-5 rounded-xl font-medium"
+                className="hidden sm:inline-flex h-11 xl:h-12 px-5 xl:px-6 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-sm xl:text-[15px] font-semibold whitespace-nowrap"
                 onClick={() =>
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                  document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Book a Consultation
+                Book now
               </Button>
 
               <button
@@ -421,23 +541,24 @@ answer:
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden bg-slate-900 border-t border-white/10"
+            className="lg:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10"
           >
             <div className="px-4 py-6 space-y-4">
               <div className="flex items-center gap-2 text-sm font-medium pb-4 border-b border-white/10">
                 <Link
                   href="/"
-                  className="px-3 py-2 text-white/60 hover:text-white transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   IT
                 </Link>
                 <span className="text-white/30">|</span>
-                <span className="px-3 py-2 text-blue-400 font-semibold">EN</span>
+                <span className="text-blue-400 font-semibold">EN</span>
               </div>
 
               {navLinks.map((link) => {
                 const sectionId = link.href.replace("#", "");
                 const isActive = activeSection === sectionId;
+
                 return (
                   <a
                     key={link.href}
@@ -453,13 +574,13 @@ answer:
               })}
 
               <Button
-                className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl py-6 whitespace-normal break-words text-center"
+                className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl py-6 text-center font-semibold"
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                GET MORE CLIENTS
+                Book now
               </Button>
             </div>
           </motion.div>
@@ -467,77 +588,394 @@ answer:
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-slate-900">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-          <div className="absolute top-16 right-[-20%] sm:right-20 w-[260px] h-[260px] sm:w-[500px] sm:h-[500px] bg-blue-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
-          <div className="absolute bottom-16 left-[-20%] sm:left-20 w-[220px] h-[220px] sm:w-[400px] sm:h-[400px] bg-purple-500/10 rounded-full blur-[90px] sm:blur-[120px]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:60px_60px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_78%,rgba(124,58,237,0.18),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(59,130,246,0.16),transparent_26%),linear-gradient(180deg,#0f172a_0%,#111827_45%,#0f172a_100%)]" />
+
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:58px_58px]" />
+
+          <HeroGlow className="left-[-5rem] bottom-10 w-[260px] h-[260px] sm:w-[420px] sm:h-[420px] bg-purple-500/12" />
+          <HeroGlow className="right-[-4rem] top-16 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] bg-blue-500/12" />
+
+          {heroParticles.map((p) => (
+            <motion.span
+              key={p.id}
+              className="pointer-events-none absolute rounded-full bg-white/70 shadow-[0_0_12px_rgba(96,165,250,0.75)]"
+              style={{
+                left: p.left,
+                top: p.top,
+                width: p.size,
+                height: p.size,
+              }}
+              initial={{ opacity: 0.16, scale: 0.8 }}
+              animate={{ opacity: [0.12, 0.8, 0.12], scale: [0.8, 1.2, 0.8] }}
+              transition={{
+                delay: p.delay,
+                duration: p.duration,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-20 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
-            <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10 max-w-full">
-              <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
-                Digital Growth Partner
-              </span>
-            </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-16 sm:pb-20 w-full">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
+            {/* LEFT TEXT */}
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center lg:text-left"
+            >
+              <div className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-blue-500/15 border border-blue-400/30 backdrop-blur-md shadow-lg shadow-blue-500/10">
+                <span className="text-sm sm:text-base font-semibold text-blue-300 tracking-wide">
+                  New plan for local businesses
+                </span>
+              </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] sm:leading-tight break-words">
-              <span className="text-white">Websites and digital systems</span>
-              <br />
-              <span className="text-white">designed to </span>
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                generate clients
-              </span>
-              <span className="text-white">,</span>
-              <br />
-              <span className="text-gray-400">not just traffic.</span>
-            </h1>
+              <h1 className="mt-8 text-5xl sm:text-7xl md:text-8xl xl:text-[6.5rem] font-bold leading-[0.96] tracking-[-0.04em] text-white">
+                Your professional
+                <span className="block">website</span>
+                <span className="block bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(56,189,248,0.18)]">
+                  from €69/month
+                </span>
+              </h1>
 
-            <p className="max-w-3xl mx-auto text-base sm:text-xl text-gray-400 leading-relaxed px-1">
-              We help businesses and professionals grow online with high-converting websites,
-              lead generation systems, and measurable digital strategies.
-            </p>
+              <p className="mt-7 max-w-3xl mx-auto lg:mx-0 text-xl sm:text-2xl text-gray-300 leading-relaxed">
+                No upfront investment. A custom website with hosting included,
+                optimized for smartphones and ongoing support.
+              </p>
 
-            <div className="pt-4 sm:pt-6">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto max-w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 rounded-xl font-medium whitespace-normal break-words text-center"
-                onClick={() =>
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-                }
+              <div className="pt-8 flex justify-center lg:justify-start">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/15 bg-white/5 text-white hover:bg-white/10 hover:border-blue-400/40 backdrop-blur-md transition-all duration-300 text-lg px-10 py-6 rounded-xl font-semibold tracking-wide shadow-lg shadow-slate-950/30"
+                  onClick={() =>
+                    document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
+                  }
+                >
+                  BOOK A CONSULTATION
+                </Button>
+              </div>
+
+              <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm text-slate-300">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)]" />
+                  100% custom-made
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(192,132,252,0.8)]" />
+                  No upfront cost
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.8)]" />
+                  Ongoing support
+                </div>
+              </div>
+            </motion.div>
+
+            {/* RIGHT CARD */}
+            <motion.div
+              initial={{ opacity: 0, x: 20, y: 24 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.12 }}
+              className="relative"
+            >
+              <motion.div
+                whileHover={{ y: -6, scale: 1.01 }}
+                transition={{ duration: 0.28 }}
+                className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,18,38,0.96),rgba(11,17,33,0.9))] p-6 sm:p-7 shadow-[0_0_70px_rgba(59,130,246,0.10)] backdrop-blur-xl"
               >
-                START YOUR GROWTH
-              </Button>
-            </div>
-          </motion.div>
-        </div>
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.20),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(56,189,248,0.16),transparent_22%)]" />
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
-          <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-            <div className="w-1 h-2 bg-white/50 rounded-full" />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm uppercase tracking-[0.22em] text-slate-300">
+                      Starter Plan
+                    </span>
+
+                    <span className="text-xs px-3 py-1 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
+                      No upfront investment
+                    </span>
+                  </div>
+
+                  <div className="mt-6">
+                    <p className="text-slate-400 text-sm">Starting from</p>
+
+                    <div className="flex items-end gap-2 mt-1">
+                      <p className="text-5xl sm:text-6xl font-bold text-white">
+                        69€
+                      </p>
+
+                      <span className="pb-1 text-xl text-slate-300">
+                        /month
+                      </span>
+                    </div>
+
+                    <p className="mt-3 text-lg text-slate-200">
+                      The easiest way to get a professional website for your business.
+                    </p>
+                  </div>
+
+                  <div className="mt-6 space-y-3 text-slate-200">
+                    {[
+                      "100% custom-made website",
+                      "Hosting included",
+                      "Optimized for smartphones",
+                      "WhatsApp and direct contacts",
+                      "Basic Google SEO",
+                      "Ongoing technical support",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center justify-between rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3"
+                      >
+                        <span>{item}</span>
+
+                        <span className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_14px_rgba(192,132,252,0.95)]" />
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="mt-6 text-center text-sm text-slate-400">
+                    Perfect for local businesses and professionals
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
+
+          {/* PREMIUM SCROLL CUE */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.45 }}
+            className="mt-14 sm:mt-16 flex justify-center"
+          >
+            <button
+              type="button"
+              onClick={() => {
+                const section = document.getElementById("pacchetto-crescita");
+                if (section) {
+                  const y = section.getBoundingClientRect().top + window.pageYOffset - 110;
+                  window.scrollTo({ top: y, behavior: "smooth" });
+                }
+              }}
+              className="group relative flex flex-col items-center gap-4 rounded-[28px] border border-white/8 bg-white/[0.03] px-6 sm:px-8 py-5 backdrop-blur-md shadow-[0_0_40px_rgba(59,130,246,0.08)] transition-all duration-300 hover:border-blue-400/20 hover:bg-white/[0.05]"
+            >
+              <div className="pointer-events-none absolute inset-0 rounded-[28px] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.10),transparent_60%)] opacity-60" />
+
+              <div className="relative flex items-center gap-3">
+                <div className="h-px w-10 sm:w-14 bg-gradient-to-r from-transparent via-blue-400/60 to-transparent" />
+                <span className="text-xs sm:text-sm uppercase tracking-[0.28em] text-slate-300 group-hover:text-white transition-colors">
+                  What the plan includes
+                </span>
+                <div className="h-px w-10 sm:w-14 bg-gradient-to-r from-transparent via-purple-400/60 to-transparent" />
+              </div>
+
+              <div className="relative flex h-14 w-10 items-start justify-center rounded-full border border-white/10 bg-slate-950/40 shadow-inner shadow-white/5">
+                <motion.span
+                  className="absolute top-3 h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_16px_rgba(103,232,249,0.9)]"
+                  animate={{ y: [0, 18, 0], opacity: [1, 0.35, 1] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.span
+                  className="absolute top-5 h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_14px_rgba(192,132,252,0.9)]"
+                  animate={{ y: [0, 16, 0], opacity: [0.8, 0.2, 0.8] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                />
+              </div>
+
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                className="relative flex flex-col items-center"
+              >
+                <span className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                  Scroll to discover the offer
+                </span>
+
+                <svg
+                  className="mt-2 h-5 w-5 text-blue-300/90"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 5v14" />
+                  <path d="M6 13l6 6 6-6" />
+                </svg>
+              </motion.div>
+            </button>
+          </motion.div>
         </div>
       </section>
 
-      {/* Our Method Section */}
-      <section id="method" className="py-24 lg:py-40 bg-white">
+      {/* Pacchetto Crescita */}
+      <section id="pacchetto-crescita" className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16 sm:mb-24">
             <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
-              Our Approach
+              Growth Package
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Our Method
+              Your professional website from €69/month
+            </h2>
+            <p className="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
+              The easiest way to give your business a professional online presence
+              without facing a large upfront investment. A custom website, carefully
+              crafted and designed to help you present yourself properly online.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                num: "01",
+                icon: <AnalysisIcon />,
+                title: "Custom website",
+                desc: "We create a professional website designed to represent your business at its best and make it easier for customers to contact you.",
+              },
+              {
+                num: "02",
+                icon: <StrategyIcon />,
+                title: "Professional online presence",
+                desc: "Your website is optimized for smartphones, connected to your social channels, and built to communicate clearly and professionally.",
+              },
+              {
+                num: "03",
+                icon: <ImplementIcon />,
+                title: "Google visibility",
+                desc: "We set up a basic SEO structure and support the optimization of your Google Business Profile to help you get found more easily.",
+              },
+              {
+                num: "04",
+                icon: <OptimizeIcon />,
+                title: "Ongoing support",
+                desc: "Hosting, technical maintenance, support, and content updates to keep your website tidy, active, and professional at all times.",
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * i }}
+                viewport={{ once: true }}
+                className="relative group min-w-0"
+              >
+                <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
+                  <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
+                    {step.num}
+                  </div>
+                  <div className="relative min-w-0">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-500/20">
+                      {step.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed break-words">{step.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.2} className="mt-16 sm:mt-20">
+            <div className="relative rounded-2xl bg-slate-900 p-8 sm:p-10 lg:p-12 shadow-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.12),transparent_25%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.12),transparent_25%)]" />
+
+              <div className="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+                <div>
+                  <span className="inline-block text-sm font-semibold text-blue-400 tracking-wider uppercase mb-4">
+                    What the plan includes
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-5 leading-tight">
+                    Everything you need to have a professional online presence
+                  </h3>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    A simple, affordable solution with no upfront investment,
+                    designed for local businesses and professionals who want to start
+                    with a serious, modern website and ongoing support.
+                  </p>
+
+                  <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-300">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,0.8)]" />
+                    No upfront investment
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    "100% custom-made website",
+                    "Hosting included",
+                    "Mobile optimization",
+                    "Contact / booking form",
+                    "WhatsApp integration",
+                    "Social media integration",
+                    "Basic SEO",
+                    "Google Business Profile optimization",
+                    "Technical maintenance",
+                    "Technical support",
+                    "FAQ section",
+                    "Content edits included",
+                  ].map((item, i) => (
+                    <div
+                      key={i}
+                      className="rounded-xl bg-white/5 border border-white/10 p-5 text-white backdrop-blur-sm hover:bg-white/[0.07] hover:border-blue-400/20 transition-all duration-300"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative z-10 mt-10 text-center">
+                <div className="mb-5">
+                  <p className="text-sm uppercase tracking-[0.22em] text-slate-400 mb-2">
+                    Starter Plan
+                  </p>
+                  <div className="flex items-end justify-center gap-2">
+                    <span className="text-4xl sm:text-5xl font-bold text-white">69€</span>
+                    <span className="text-lg sm:text-xl text-slate-300 mb-1">/month</span>
+                  </div>
+                </div>
+
+                <a href="#contatti" className="inline-block">
+                  <Button
+                    className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-5 sm:py-6 rounded-xl text-base sm:text-lg font-medium whitespace-normal break-words text-center px-6 sm:px-10"
+                  >
+                    REQUEST YOUR WEBSITE
+                  </Button>
+                </a>
+
+                <p className="mt-4 text-sm text-slate-400">
+                  Perfect for local businesses and professionals
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Metodo */}
+      <section id="metodo" className="py-24 lg:py-40 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-16 sm:mb-24">
+            <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+              Our approach
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              Our method
             </h2>
             <p className="max-w-2xl mx-auto text-lg text-gray-600">
-              A structured process to transform your digital presence into concrete results.
+              A structured process to turn your digital presence into real results.
             </p>
           </AnimatedSection>
 
@@ -547,7 +985,7 @@ answer:
                 num: "01",
                 icon: <AnalysisIcon />,
                 title: "Analysis",
-                desc: "We study your market and online positioning.",
+                desc: "We study your market and your online positioning.",
               },
               {
                 num: "02",
@@ -559,7 +997,7 @@ answer:
                 num: "03",
                 icon: <ImplementIcon />,
                 title: "Implementation",
-                desc: "We build your website, funnels, and acquisition channels.",
+                desc: "We build websites, funnels, and customer acquisition channels.",
               },
               {
                 num: "04",
@@ -594,15 +1032,70 @@ answer:
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-24 lg:py-40 bg-slate-900">
+      {/* Risultati */}
+      <section id="risultati" className="py-24 lg:py-40 bg-white scroll-mt-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-16 sm:mb-24">
+            <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+              Results
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              Results the ProfitSignal system can generate
+            </h2>
+            <p className="max-w-2xl mx-auto text-lg text-gray-600">
+              Our goal is to turn your online presence into a steady flow of qualified
+              leads through a system designed to attract, convert, and optimize.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {results.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.number}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  viewport={{ once: true }}
+                  className="relative group min-w-0"
+                >
+                  <div className="p-8 rounded-xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full overflow-hidden">
+                    <div className="absolute -top-4 -left-2 text-6xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
+                      {item.number}
+                    </div>
+
+                    <div className="relative min-w-0">
+                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white mb-6">
+                        <Icon className="h-7 w-7" strokeWidth={2.1} />
+                      </div>
+
+                      <h3 className="text-xl font-bold text-slate-900 mb-3 break-words">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-gray-600 leading-relaxed break-words">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Servizi */}
+      <section id="servizi" className="py-24 lg:py-40 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16 sm:mb-24">
             <span className="inline-block text-sm font-semibold text-blue-400 tracking-wider uppercase mb-4">
-              What We Do
+              What we do
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Solutions for Digital Growth
+              Solutions for digital growth
             </h2>
             <p className="max-w-2xl mx-auto text-lg text-gray-400">
               Strategic services designed to generate concrete and measurable results.
@@ -613,21 +1106,33 @@ answer:
             {[
               {
                 icon: <WebsiteIcon />,
-                title: "High-Converting Websites",
-                desc: "Websites designed to turn visitors into leads and customers. Not simple showcases, but real business tools.",
-                features: ["Conversion-focused design", "Mobile optimized", "SEO-ready"],
+                title: "High-converting websites",
+                desc: "Websites designed to turn visitors into leads and customers. Not just simple showcases, but real business tools.",
+                features: [
+                  "Conversion-focused design",
+                  "Mobile optimized",
+                  "SEO-ready",
+                ],
               },
               {
                 icon: <LeadGenIcon />,
-                title: "Lead Generation Systems",
+                title: "Lead generation systems",
                 desc: "Digital strategies to generate qualified inquiries and appointments consistently and predictably.",
-                features: ["Acquisition funnels", "Optimized landing pages", "Marketing automations"],
+                features: [
+                  "Acquisition funnels",
+                  "Optimized landing pages",
+                  "Marketing automations",
+                ],
               },
               {
                 icon: <AcquisitionIcon />,
-                title: "Client Acquisition Strategies",
-                desc: "Campaigns and digital systems to increase the flow of new clients and maximize ROI.",
-                features: ["Targeted ad campaigns", "Content strategy", "Analytics & reporting"],
+                title: "Customer acquisition strategies",
+                desc: "Campaigns and digital systems to increase the flow of new customers and maximize ROI.",
+                features: [
+                  "Targeted ad campaigns",
+                  "Content strategy",
+                  "Analytics and reporting",
+                ],
               },
             ].map((service, i) => (
               <motion.div
@@ -659,28 +1164,28 @@ answer:
         </div>
       </section>
 
-      {/* Who We Work With Section */}
+      {/* Clienti */}
       <section className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             <AnimatedSection className="min-w-0">
               <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
-                Our Clients
+                Our clients
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-                Who We Work With
+                Who we work with
               </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                We collaborate with businesses that want to grow concretely online,
-                not with those who just seek a digital presence.
+                We work with businesses that want to grow online in a concrete way,
+                not with those looking only for a digital presence.
               </p>
 
               <div className="space-y-4">
                 {[
                   "Local businesses that want to dominate their market",
                   "Professionals who want more qualified clients",
-                  "Small and medium-sized companies ready to scale",
-                  "Businesses that want to generate clients online",
+                  "Small and medium-sized businesses ready to scale",
+                  "Businesses that want to generate customers online",
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -713,17 +1218,17 @@ answer:
               <div className="relative bg-white rounded-xl p-6 sm:p-10 shadow-xl border border-gray-100 overflow-hidden max-w-full">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 break-words">
-                    Want to know if we&apos;re the right fit?
+                    Want to know if we are the right fit?
                   </h3>
                   <p className="text-gray-600">Book a free 15-minute call</p>
                 </div>
                 <Button
                   className="w-full max-w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] py-5 sm:py-6 rounded-xl text-base sm:text-lg font-medium whitespace-normal break-words text-center px-4 sm:px-6"
                   onClick={() =>
-                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                    document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  BOOK YOUR FREE CONSULTATION
+                  BOOK A CONSULTATION
                 </Button>
               </div>
             </AnimatedSection>
@@ -731,140 +1236,350 @@ answer:
         </div>
       </section>
 
-      {/* About Us Section */}
-      <section id="about" className="py-24 lg:py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <AnimatedSection className="order-2 lg:order-1 min-w-0">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl blur-2xl" />
+      {/* Chi siamo */}
+      <section
+        id="chi-siamo"
+        className="relative py-24 lg:py-40 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] overflow-hidden"
+      >
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute left-[-10%] top-20 w-[320px] h-[320px] bg-blue-500/10 rounded-full blur-3xl" />
+          <div className="absolute right-[-8%] bottom-10 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.015)_1px,transparent_1px)] bg-[size:42px_42px] sm:bg-[size:56px_56px]" />
+        </div>
 
-                <div className="relative bg-slate-900 rounded-xl p-8 sm:p-10 lg:p-14 min-h-[360px] sm:min-h-[520px] flex items-center overflow-hidden">
-                  <blockquote className="text-2xl sm:text-3xl lg:text-5xl text-white font-light leading-[1.2] italic max-w-[680px] break-words">
-                    “We don&apos;t just build websites. We create digital systems designed to generate business opportunities.”
-                  </blockquote>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <AnimatedSection className="order-2 lg:order-1 min-w-0">
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="relative"
+              >
+                <div className="absolute -inset-6 bg-gradient-to-br from-blue-500/15 via-purple-500/10 to-blue-500/10 rounded-[32px] blur-3xl opacity-70" />
+
+                <div className="relative rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,#081329_0%,#020817_100%)] p-8 sm:p-10 lg:p-14 min-h-[420px] flex items-center overflow-hidden shadow-[0_0_80px_rgba(59,130,246,0.08)] transition-all duration-500 hover:shadow-[0_0_120px_rgba(168,85,247,0.16)]">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(96,165,250,0.12),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.12),transparent_24%)]" />
+
+                  <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:34px_34px]" />
+
+                  <motion.div
+                    className="absolute top-10 right-10 w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_18px_rgba(96,165,250,1)]"
+                    animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.3, 0.9] }}
+                    transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+                  />
+
+                  <motion.div
+                    className="absolute bottom-12 left-12 w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_18px_rgba(192,132,252,1)]"
+                    animate={{ opacity: [0.25, 0.85, 0.25], scale: [0.9, 1.25, 0.9] }}
+                    transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+                  />
+
+                  <div className="relative z-10">
+                    <span className="text-xs tracking-[0.28em] text-blue-400 uppercase mb-6 block font-medium">
+                      Manifesto
+                    </span>
+
+                    <blockquote className="text-[2.2rem] sm:text-[2.6rem] lg:text-[3rem] text-white font-light leading-[1.25] italic tracking-tight max-w-[680px]">
+                      “We do not build simple websites. We build digital systems
+                      designed to generate business opportunities.”
+                    </blockquote>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2} className="order-1 lg:order-2 space-y-8 min-w-0">
-              <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase">
-                Company
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
-                Your Partner for Digital Growth
-              </h2>
-              <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  <strong className="text-slate-900">ProfitSignal</strong> was founded with a simple goal:
-                  to help businesses and professionals turn their online presence into real clients.
-                </p>
-                <p>
-                  We don&apos;t just create aesthetically beautiful websites.
-                  We design strategic digital systems that work for you,
-                  generating leads and business opportunities consistently.
-                </p>
-                <p>
-                  Every project starts from an in-depth analysis and develops
-                  with a clear strategy, focused on results and measurable growth.
-                </p>
+            <AnimatedSection delay={0.15} className="order-1 lg:order-2 space-y-8 min-w-0">
+              <div>
+                <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+                  About us
+                </span>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-[1.05]">
+                  The partner for your digital growth
+                </h2>
+              </div>
+
+              <div className="w-20 h-[3px] rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
+
+              <div className="space-y-7 text-lg text-gray-600 leading-relaxed max-w-xl">
+                <motion.div
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative pl-5"
+                >
+                  <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.7)]" />
+                  <p>
+                    <strong className="text-slate-900">ProfitSignal</strong> was born
+                    with one simple goal: helping businesses and professionals turn
+                    their online presence into real customers.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative pl-5"
+                >
+                  <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_12px_rgba(168,85,247,0.7)]" />
+                  <p>
+                    We do not just create visually appealing websites.
+                    We design strategic digital systems that work for you,
+                    generating leads and business opportunities consistently.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative pl-5"
+                >
+                  <span className="absolute left-0 top-3 w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_12px_rgba(34,211,238,0.7)]" />
+                  <p>
+                    Every project starts with in-depth analysis and develops
+                    through a clear strategy focused on results and measurable
+                    growth.
+                  </p>
+                </motion.div>
+              </div>
+
+              <div className="grid sm:grid-cols-3 gap-3 pt-4">
+                {["Strategy", "Conversion", "Measurable growth"].map((item, i) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.08 * i }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -3 }}
+                    className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-4 text-sm font-medium text-slate-700 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300"
+                  >
+                    {item}
+                  </motion.div>
+                ))}
               </div>
             </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="py-24 lg:py-40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:36px_36px] sm:bg-[size:50px_50px]" />
 
         <AnimatedSection className="relative z-10 max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center min-w-0">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight break-words">
-            Ready to Grow Your Business Online?
+            Ready to grow your business online?
           </h2>
           <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Discover how we can help you generate more clients with a customized digital system.
+            Discover how we can help you generate more clients with a customized
+            digital system.
           </p>
           <Button
             size="lg"
             className="w-full sm:w-auto max-w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 shadow-2xl shadow-black/30 hover:shadow-black/40 hover:brightness-110 transition-all duration-300 hover:scale-[1.02] text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 rounded-xl font-semibold border border-white/20 whitespace-normal break-words text-center"
             onClick={() =>
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            START GETTING CLIENTS
+            BOOK A FREE CONSULTATION
           </Button>
         </AnimatedSection>
       </section>
-{/* FAQ SECTION */}
 
-<section className="py-24">
-<div className="max-w-4xl mx-auto px-6">
+      {/* FAQ SECTION */}
+      <section id="faq" className="py-24 sm:py-28 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-14 sm:mb-16">
+            <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+              Frequently asked questions
+            </span>
 
-<div className="text-center mb-16">
-<h2 className="text-3xl md:text-4xl font-bold mb-4">
-Frequently asked questions
-</h2>
-<p className="text-muted-foreground">
-Everything you need to know before getting started.
-</p>
-</div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+              Everything you need to know
+              <span className="block">about the €69/month plan</span>
+            </h2>
 
-<div className="space-y-4">
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Clear answers to the most common questions about our subscription for your professional website.
+            </p>
+          </div>
 
-{faqItems.map((item, index) => (
+          <div className="space-y-4">
+            {faqItems.map((item, index) => (
+              <div
+                key={index}
+                className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
+                  openFaq === index
+                    ? "border-blue-400 bg-white shadow-lg shadow-blue-500/10"
+                    : "border-gray-200 bg-white shadow-sm"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className={`w-full flex items-center justify-between gap-6 text-left px-6 sm:px-8 py-5 sm:py-6 transition-all duration-200 ${
+                    openFaq === index ? "bg-blue-50/60" : "hover:bg-blue-50/50"
+                  }`}
+                >
+                  <span className="text-lg sm:text-xl font-semibold text-slate-900 leading-snug">
+                    {item.question}
+                  </span>
 
-<div
-key={index}
-className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden"
->
+                  <div
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                      openFaq === index
+                        ? "border-blue-300 bg-blue-100 text-blue-600"
+                        : "border-gray-200 bg-white text-slate-700"
+                    }`}
+                  >
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform duration-300 ${
+                        openFaq === index ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
 
-<button
-type="button"
-onClick={() => setOpenFaq(openFaq === index ? null : index)}
-className="w-full flex items-center justify-between text-left px-6 py-5"
->
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    openFaq === index
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 sm:px-8 pb-6 sm:pb-7 text-gray-600 text-base sm:text-lg leading-relaxed">
+                      {item.answer}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
-<span className="text-lg font-medium">
-{item.question}
-</span>
+          <div className="mt-16 text-center">
+            <h3 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">
+              Do you still have a question?
+            </h3>
 
-<ChevronDown
-className={`w-5 h-5 transition-transform ${
-openFaq === index ? "rotate-180" : ""
-}`}
-/>
+            <p className="text-gray-600 text-base sm:text-lg mb-8 max-w-xl mx-auto">
+              We are available to help you understand whether this plan is the right fit for your business.
+            </p>
 
-</button>
+            <a href="#contatti" className="inline-block">
+              <Button
+                className="bg-white border border-gray-200 text-slate-900 hover:bg-gray-50 hover:border-blue-300 shadow-sm hover:shadow-md transition-all duration-300 rounded-full px-8 py-6 text-lg font-semibold"
+              >
+                BOOK A CONSULTATION
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
 
-{openFaq === index && (
+      {/* TESTIMONIANZE */}
+      <section id="testimonianze" className="py-24 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+              Testimonials
+            </span>
 
-<div className="px-6 pb-6 text-gray-600 leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              What our clients say
+            </h2>
 
-{item.answer}
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              More and more local businesses are choosing to have a professional website
+              to present themselves online and be found more easily by customers.
+            </p>
+          </div>
 
-</div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                text: "Before, I did not have a real website and many clients struggled to find information about my business. Now I have a professional site and receive many more inquiries.",
+                author: "Marco R.",
+                job: "Personal Trainer",
+                avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+              },
+              {
+                text: "The website completely changed the image of my business. Now when clients search for me online, they immediately find clear and professional information.",
+                author: "Laura B.",
+                job: "Beauty Center",
+                avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+              },
+              {
+                text: "I finally have a simple, clear website that truly represents my work. Clients find me on Google and contact me directly through the site.",
+                author: "Andrea M.",
+                job: "Plumber",
+                avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+              },
+              {
+                text: "The website helped me present my services better and build more trust with clients who find me online.",
+                author: "Francesca L.",
+                job: "Consultant",
+                avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+              },
+              {
+                text: "Now when someone searches for my business online, they immediately find the website with all the information. It has been very useful for my business.",
+                author: "Luca D.",
+                job: "Photography Studio",
+                avatar: "https://randomuser.me/api/portraits/men/11.jpg",
+              },
+              {
+                text: "I did not think a website could make such a big difference. Now clients find me more easily and immediately understand what I offer.",
+                author: "Giulia P.",
+                job: "Hairdresser",
+                avatar: "https://randomuser.me/api/portraits/women/33.jpg",
+              },
+            ].map((review, i) => (
+              <div
+                key={i}
+                className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="flex mb-4 text-yellow-400 text-lg">
+                  ★★★★★
+                </div>
 
-)}
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  "{review.text}"
+                </p>
 
-</div>
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-full overflow-hidden border border-gray-200 shadow-sm">
+                    <img
+                      src={review.avatar}
+                      alt={review.author}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-))}
+                  <div>
+                    <p className="font-semibold text-slate-900">
+                      {review.author}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {review.job}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-</div>
-
-</div>
-</section>
-      {/* Contact Section */}
-      <section id="contact" className="py-24 lg:py-40 bg-gray-50">
+      {/* Contatti */}
+      <section id="contatti" className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16 sm:mb-20">
             <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
-              Contact Us
+              Contact us
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Let&apos;s Start Working Together
+              Let’s start working together
             </h2>
             <p className="max-w-2xl mx-auto text-lg text-gray-600">
               Fill out the form to request a free strategic consultation
@@ -874,7 +1589,9 @@ openFaq === index ? "rotate-180" : ""
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             <AnimatedSection delay={0.1} className="min-w-0">
               <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-6 sm:p-8 lg:p-10 overflow-hidden">
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">Request a Consultation</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-6">
+                  Request a consultation
+                </h3>
 
                 {submitStatus === "success" && (
                   <motion.div
@@ -883,7 +1600,7 @@ openFaq === index ? "rotate-180" : ""
                     className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700"
                   >
                     <p className="font-medium">Request sent successfully!</p>
-                    <p className="text-sm">We&apos;ll contact you within 24 hours.</p>
+                    <p className="text-sm">We will contact you within 24 hours.</p>
                   </motion.div>
                 )}
 
@@ -894,7 +1611,9 @@ openFaq === index ? "rotate-180" : ""
                     className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700"
                   >
                     <p className="font-medium">An error occurred.</p>
-                    <p className="text-sm">Please try again or contact us directly by email.</p>
+                    <p className="text-sm">
+                      Please try again or contact us directly by email.
+                    </p>
                   </motion.div>
                 )}
 
@@ -902,7 +1621,7 @@ openFaq === index ? "rotate-180" : ""
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-2">
-                        Full Name *
+                        Full name *
                       </label>
                       <input
                         type="text"
@@ -944,12 +1663,12 @@ openFaq === index ? "rotate-180" : ""
                         value={formData.telefono}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-gray-50 focus:bg-white"
-                        placeholder="+1 ..."
+                        placeholder="+39 ..."
                       />
                     </div>
                     <div>
                       <label htmlFor="servizio" className="block text-sm font-medium text-gray-700 mb-2">
-                        Service of Interest
+                        Service of interest
                       </label>
                       <select
                         id="servizio"
@@ -961,7 +1680,7 @@ openFaq === index ? "rotate-180" : ""
                         <option value="">Select...</option>
                         <option value="sito-web">High-converting website</option>
                         <option value="lead-gen">Lead generation system</option>
-                        <option value="acquisizione">Client acquisition strategy</option>
+                        <option value="acquisizione">Customer acquisition strategy</option>
                         <option value="altro">Other</option>
                       </select>
                     </div>
@@ -1009,7 +1728,7 @@ openFaq === index ? "rotate-180" : ""
                         Sending...
                       </span>
                     ) : (
-                      "Request Free Consultation"
+                      "Request free consultation"
                     )}
                   </Button>
                 </form>
@@ -1061,13 +1780,13 @@ openFaq === index ? "rotate-180" : ""
               </div>
 
               <div className="p-8 rounded-xl bg-slate-900 text-white overflow-hidden">
-                <h3 className="text-xl font-bold mb-4">What Happens Next?</h3>
+                <h3 className="text-xl font-bold mb-4">What happens next?</h3>
                 <ol className="space-y-4">
                   {[
                     "You receive our confirmation within 24 hours",
                     "We schedule a free strategic call",
-                    "We review your needs together",
-                    "We present a customized proposal",
+                    "We analyze your needs together",
+                    "We present you with a customized proposal",
                   ].map((step, i) => (
                     <li key={i} className="flex items-start gap-4 min-w-0">
                       <span className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
@@ -1104,7 +1823,7 @@ openFaq === index ? "rotate-180" : ""
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold mb-4">Quick links</h4>
               <ul className="space-y-3">
                 {navLinks.map((link) => (
                   <li key={link.href}>
@@ -1117,7 +1836,7 @@ openFaq === index ? "rotate-180" : ""
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Follow Us</h4>
+              <h4 className="font-semibold mb-4">Follow us</h4>
               <div className="flex items-center gap-4">
                 <a
                   href="https://instagram.com/profitsignalmedia"
@@ -1153,10 +1872,10 @@ openFaq === index ? "rotate-180" : ""
             <span>© 2026 ProfitSignal. All rights reserved.</span>
 
             <div className="flex gap-6">
-              <Link href="/en/privacy" className="hover:text-white transition-colors">
+              <Link href="/privacy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/en/cookie-policy" className="hover:text-white transition-colors">
+              <Link href="/cookie-policy" className="hover:text-white transition-colors">
                 Cookie Policy
               </Link>
             </div>
@@ -1166,7 +1885,7 @@ openFaq === index ? "rotate-180" : ""
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/393920314427?text=Hello!%20I%20would%20like%20information%20about%20your%20services."
+        href="https://wa.me/393920314427?text=Hi!%20I%20would%20like%20more%20information%20about%20your%20services."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-24 sm:bottom-8 left-4 sm:left-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 group"
@@ -1186,7 +1905,7 @@ openFaq === index ? "rotate-180" : ""
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           onClick={scrollToTop}
-          className="fixed bottom-24 sm:bottom-8 right-4 sm:right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
+          className="fixed bottom-24 sm:bottom-8 right-4 sm:right-8 w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
           aria-label="Back to top"
         >
           <ArrowUpIcon />
