@@ -1479,7 +1479,99 @@ export default function Home() {
     </div>
   </div>
 </section>
+{/* TESTIMONIANZE */}
+<section id="testimonianze" className="py-24 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-6">
 
+    <div className="text-center mb-16">
+      <span className="inline-block text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">
+        Testimonianze
+      </span>
+
+      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        Cosa dicono i nostri clienti
+      </h2>
+
+      <p className="text-gray-600 max-w-2xl mx-auto">
+        Sempre più attività locali scelgono di avere un sito professionale
+        per presentarsi online e farsi trovare più facilmente dai clienti.
+      </p>
+    </div>
+
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      {[
+        {
+          text: "Prima non avevo un vero sito e molti clienti facevano fatica a trovare informazioni sulla mia attività. Ora ho un sito professionale e ricevo molte più richieste.",
+          author: "Marco R.",
+          job: "Personal Trainer",
+        },
+        {
+          text: "Il sito ha cambiato completamente l'immagine della mia attività. Ora quando i clienti mi cercano online trovano subito informazioni chiare e professionali.",
+          author: "Laura B.",
+          job: "Centro estetico",
+        },
+        {
+          text: "Finalmente ho un sito semplice, chiaro e che rappresenta davvero il mio lavoro. I clienti mi trovano su Google e mi contattano direttamente dal sito.",
+          author: "Andrea M.",
+          job: "Idraulico",
+        },
+        {
+          text: "Il sito mi ha aiutato a presentare meglio i miei servizi e a dare più fiducia ai clienti che mi trovano online.",
+          author: "Francesca L.",
+          job: "Consulente",
+        },
+        {
+          text: "Ora quando qualcuno cerca la mia attività online trova subito il sito con tutte le informazioni. È stato molto utile per la mia attività.",
+          author: "Luca D.",
+          job: "Studio fotografico",
+        },
+        {
+          text: "Non pensavo che un sito potesse fare così tanta differenza. Adesso i clienti mi trovano più facilmente e capiscono subito cosa offro.",
+          author: "Giulia P.",
+          job: "Parrucchiera",
+        },
+      ].map((review, i) => (
+
+        <div
+          key={i}
+          className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1"
+        >
+
+          <div className="flex mb-4 text-yellow-400">
+            ★★★★★
+          </div>
+
+          <p className="text-gray-700 leading-relaxed mb-6">
+            "{review.text}"
+          </p>
+
+          <div className="flex items-center gap-3">
+
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-semibold">
+              {review.author.charAt(0)}
+            </div>
+
+            <div>
+              <p className="font-semibold text-slate-900">
+                {review.author}
+              </p>
+              <p className="text-sm text-gray-500">
+                {review.job}
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+</section>
       {/* Contatti */}
       <section id="contatti" className="py-24 lg:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
